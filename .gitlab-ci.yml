@@ -1,0 +1,26 @@
+image: maven:3-jdk-8
+
+stages:
+  - build
+  - deploy
+
+melakukan-build-dan-package:
+  stage: build
+  script:
+    - mvn clean package -DskipTests
+  artifacts:
+    paths:
+      - target/*.jar
+
+deploy-to-heroku-discovery-service:
+  stage: deploy
+  image: ubuntu:latest
+  variables:
+    HEROKU_API_KEY: $HEROKU_API_KEY
+  script:
+    - apt-get update
+    - apt-get install curl openjdk-8-jdk-headless curl gnupg2 -y
+    - curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+    - heroku plugins:install heroku-cli-deploy
+    - heroku deploy:jar target/*.jar --app $HEROKU_APP_NAME_SISPUR
+    - heroku buildpacks:clear --app $HEROKU_APP_NAME_SISPUR
