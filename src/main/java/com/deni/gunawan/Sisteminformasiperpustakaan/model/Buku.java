@@ -32,8 +32,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Buku {
 
      @Id
-     @GeneratedValue(generator = "uuid")
-     @GenericGenerator(name = "uuid", strategy = "uuid2")
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
      @Column(name = "id_buku", length = 36)
      private String id_buku;
 

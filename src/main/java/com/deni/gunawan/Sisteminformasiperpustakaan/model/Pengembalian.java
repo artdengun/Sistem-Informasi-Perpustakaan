@@ -27,8 +27,7 @@ import java.sql.Date;
 public class Pengembalian {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_kembali", length = 36)
     private String id;
 

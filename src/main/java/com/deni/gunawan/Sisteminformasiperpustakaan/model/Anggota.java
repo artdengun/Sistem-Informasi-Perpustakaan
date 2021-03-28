@@ -28,8 +28,7 @@ import java.util.List;
 public class Anggota {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_anggota", length = 36)
     private String id_anggota;
 
@@ -46,7 +45,7 @@ public class Anggota {
     @Column(name = "angkatan", length = 50, nullable = false)
     private String angkatan;
 
-    @Column(name = "alamat", length = 100, nullable = false)
+    @Column(name = "alamat", nullable = false)
     private String alamat;
 
     @OneToMany(mappedBy = "anggota")
