@@ -6,18 +6,18 @@
 package com.deni.gunawan.Sisteminformasiperpustakaan.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
+import java.sql.Date;
 
 /**
  *
@@ -58,13 +58,12 @@ public class Peminjaman  implements Serializable {
     @OneToMany(mappedBy = "peminjaman", fetch = FetchType.EAGER)
     private List<Pengembalian> pengembalianList;
 
-
-    @Column(name = "tanggal_pinjam", columnDefinition = "DATE")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "tanggal_pinjam")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date tanggal_pinjam;
 
-    @Column(name = "tanggal_kembali",  columnDefinition = "DATE")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "tanggal_kembali")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date tanggal_kembali;
 
 }

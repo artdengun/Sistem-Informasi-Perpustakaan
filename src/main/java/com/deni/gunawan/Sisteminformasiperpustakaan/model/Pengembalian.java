@@ -6,17 +6,21 @@
 package com.deni.gunawan.Sisteminformasiperpustakaan.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  *
@@ -35,8 +39,8 @@ public class Pengembalian implements Serializable {
     @Column(name = "id_kembali")
     private String id_kembali;
 
-    @Column(name = "tanggal_kembali", columnDefinition = "DATE")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "tanggal_kembali")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date tanggal_kembali;
 
     @Column(name = "terlambat", length = 10)
