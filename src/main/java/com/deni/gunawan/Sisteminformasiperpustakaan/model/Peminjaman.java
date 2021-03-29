@@ -40,18 +40,18 @@ public class Peminjaman  implements Serializable {
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "nama", insertable = false, updatable = false)
+    @JoinColumn(name = "anggotaid", insertable = false, updatable = false)
     private Anggota anggota;
-    @Column(name = "nama", nullable = false, length = 200)
-    private String nama;
+    @Column(name = "anggotaid", nullable = false, length = 200)
+    private String anggotaid;
 
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "judul", insertable = false, updatable = false)
+    @JoinColumn(name = "bukuid", insertable = false, updatable = false)
     private Buku buku;
-    @Column(name = "judul", nullable = false, length = 200)
-    private String judul;
+    @Column(name = "bukuid", nullable = false, length = 200)
+    private String bukuid;
 
 
     @JsonManagedReference

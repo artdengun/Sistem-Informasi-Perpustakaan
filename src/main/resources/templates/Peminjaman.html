@@ -208,8 +208,8 @@
                                     </tfoot>
                                     <tbody>
                                         <tr th:each="peminjaman:${peminjamans}">
-                                            <td th:text="${peminjaman.nama}"></td>
-                                            <td th:text="${peminjaman.judul}"></td>
+                                            <td th:text="${peminjaman.anggota.nama}"></td>
+                                            <td th:text="${peminjaman.buku.judul}"></td>
                                             <td th:text="${peminjaman.tanggal_pinjam}"></td>
                                             <td th:text="${peminjaman.tanggal_kembali}"></td>
                                             <td>
@@ -272,21 +272,21 @@
 
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="nama" class="col-form-label">Nama Peminjam: </label>
-                        <select class="form-control" id="nama" name="nama">
+                        <label for="anggotaid" class="col-form-label">Nama Peminjam: </label>
+                        <select class="form-control" id="anggotaid" name="anggotaid">
                             <option>-Pilih-</option>
                             <option th:each="anggota : ${anggotas}"
-                                    th:value="${anggota.nama}"
+                                    th:value="${anggota.id_anggota}"
                                     th:text="${anggota.nama}">
                             </option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="judul" class="col-form-label">Judul Buku: </label>
-                        <select class="form-control" id="judul" name="judul">
+                        <label for="bukuid" class="col-form-label">Judul Buku: </label>
+                        <select class="form-control" id="bukuid" name="bukuid">
                             <option>-Pilih-</option>
                             <option th:each="buku : ${bukus}"
-                                    th:value="${buku.judul}"
+                                    th:value="${buku.id_buku}"
                                     th:text="${buku.judul}">
                             </option>
                         </select>

@@ -1,5 +1,5 @@
 CREATE TABLE t_buku(
-    id_buku     varchar (36) primary key NOT NULL DEFAULT '0',
+    id_buku     varchar (36) primary key unique,
     judul       varchar (200) not null,
     pengarang   varchar (150) not null,
     penerbit    varchar (150) not null,

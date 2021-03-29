@@ -1,10 +1,10 @@
 CREATE TABLE t_peminjaman(
-        id_pinjaman varchar(36) primary key NOT NULL DEFAULT '0',
-        nama varchar(200),
-        judul varchar(200),
+        id_pinjaman varchar(36) primary key unique,
+        anggotaid varchar(200),
+        bukuid varchar(200),
         tanggal_pinjam date,
         tanggal_kembali date,
-        FOREIGN KEY (nama) REFERENCES t_anggota(id_anggota) ON DELETE RESTRICT,
-        FOREIGN KEY (judul) REFERENCES t_buku(id_buku) ON DELETE CASCADE
+        FOREIGN KEY (anggotaid) REFERENCES t_anggota(id_anggota),
+        FOREIGN KEY (bukuid) REFERENCES t_buku(id_buku)
 );
 
