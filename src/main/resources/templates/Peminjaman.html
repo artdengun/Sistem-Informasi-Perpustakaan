@@ -280,14 +280,27 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="id_anggota" class="col-form-label">ID Anggota:</label>
-                        <input type="text" class="form-control" id="id_anggota" name="id_anggota" placeholder="isi ID Anggota" required>
+                        <label for="idAnggotaTambah" class="col-form-label">ID Anggota: </label>
+                        <select class="form-control" id="idAnggotaTambah" name="id_anggota">
+                            <option>-Pilih-</option>
+                            <option th:each="anggota : ${anggotas}"
+                                    th:value="${anggota.id_anggota}"
+                                    th:text="${anggota.anggota_id}">
+                            </option>
+                        </select>
+                    </div>
+    `
+                    <div class="form-group">
+                        <label for="id_anggotaTambah" class="col-form-label">ID Buku: </label>
+                        <select class="form-control" id="id_anggotaTambah" name="id_anggota">
+                            <option>-Pilih-</option>
+                            <option th:each="buku : ${bukus}"
+                                    th:value="${buku.id_buku}"
+                                    th:text="${buku.buku_id}">
+                            </option>
+                        </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="id_buku" class="col-form-label">ID Buku:</label>
-                        <input type="text" class="form-control" id="id_buku" name="id_buku" placeholder="isi degnan penerbit" required>
-                    </div>
                     <div class="form-group">
                         <label for="jumlah" class="col-form-label">Tanggal Pinjam:</label>
                         <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="isi dengan jumlah buku" required>
