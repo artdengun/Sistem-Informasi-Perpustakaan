@@ -5,17 +5,13 @@
  */
 package com.deni.gunawan.Sisteminformasiperpustakaan.model;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Generated;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -29,26 +25,27 @@ import org.hibernate.annotations.GenericGenerator;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "t_buku")
-public class Buku {
+public class Buku implements Serializable {
 
-     @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     @Column(name = "id_buku", length = 36)
+     @Id @GeneratedValue(generator = "uuid" )
+     @GenericGenerator(name = "uuid", strategy = "uuid2")
+     @Column(name = "id_buku")
      private String id_buku;
 
-     @Column(name = "judul", nullable = false, length = 50)
+     @Column(name = "judul", nullable = false, length = 150)
      private String judul;
 
-     @Column(name = "pengarang", nullable = false, length = 50)
+     @Column(name = "pengarang", nullable = false, length = 150)
      private String pengarang;
 
-     @Column(name = "penerbit", nullable = false, length = 50)
+     @Column(name = "penerbit", nullable = false, length = 150)
      private String penerbit;
 
-     @Column(name = "jumlah", length = 50, nullable = false)
+     @Column(name = "jumlah", length = 150, nullable = false)
      private String jumlah;
 
-     @OneToMany(mappedBy = "buku")
+     @JsonManagedReference
+     @OneToMany(mappedBy = "buku", fetch = FetchType.EAGER)
      private List<Peminjaman> peminjamanList;
 
 }

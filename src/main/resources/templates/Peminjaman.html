@@ -189,9 +189,8 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>ID Pinjaman</th>
-                                        <th>ID Anggota</th>
-                                        <th>ID Buku</th>
+                                        <th>Nama Peminjam </th>
+                                        <th>Nama Buku</th>
                                         <th>Tanggal Pinjam</th>
                                         <th>Tanggal Kembali</th>
                                         <th>Action</th>
@@ -200,9 +199,8 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>ID Pinjaman</th>
-                                            <th>ID Anggota</th>
-                                            <th>ID Buku</th>
+                                            <th>Nama Peminjam </th>
+                                            <th>Nama Buku</th>
                                             <th>Tanggal Pinjam</th>
                                             <th>Tanggal Kembali</th>
                                             <th>Action</th>
@@ -210,9 +208,8 @@
                                     </tfoot>
                                     <tbody>
                                         <tr th:each="peminjaman:${peminjamans}">
-                                            <td th:text="${peminjaman.id_pinjaman}"></td>
-                                            <td th:text="${peminjaman.anggota_id}"></td>
-                                            <td th:text="${peminjaman.buku_id}"></td>
+                                            <td th:text="${peminjaman.nama}"></td>
+                                            <td th:text="${peminjaman.judul}"></td>
                                             <td th:text="${peminjaman.tanggal_pinjam}"></td>
                                             <td th:text="${peminjaman.tanggal_kembali}"></td>
                                             <td>
@@ -275,37 +272,33 @@
 
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="id_pinjaman" class="col-form-label">ID Pinjaman:</label>
-                        <input type="text" class="form-control" id="id_pinjaman" name="id_pinjaman"  placeholder="isi ID Pinjaman" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="idAnggotaTambah" class="col-form-label">ID Anggota: </label>
-                        <select class="form-control" id="idAnggotaTambah" name="id_anggota">
+                        <label for="nama" class="col-form-label">Nama Peminjam: </label>
+                        <select class="form-control" id="nama" name="nama">
                             <option>-Pilih-</option>
                             <option th:each="anggota : ${anggotas}"
-                                    th:value="${anggota.id_anggota}"
-                                    th:text="${anggota.id_anggota}">
+                                    th:value="${anggota.nama}"
+                                    th:text="${anggota.nama}">
                             </option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="id_anggotaTambah" class="col-form-label">ID Buku: </label>
-                        <select class="form-control" id="id_anggotaTambah" name="id_anggota">
+                        <label for="judul" class="col-form-label">Judul Buku: </label>
+                        <select class="form-control" id="judul" name="judul">
                             <option>-Pilih-</option>
                             <option th:each="buku : ${bukus}"
-                                    th:value="${buku.id_buku}"
-                                    th:text="${buku.id_buku}">
+                                    th:value="${buku.judul}"
+                                    th:text="${buku.judul}">
                             </option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="jumlah" class="col-form-label">Tanggal Pinjam:</label>
-                        <input type="date" class="form-control" id="jumlah" name="jumlah" placeholder="isi dengan jumlah buku" required>
+                        <label for="tanggal_pinjam" class="col-form-label">Tanggal Pinjam:</label>
+                        <input type="date" class="form-control" id="tanggal_pinjam" name="tanggal_pinjam" placeholder="isi dengan jumlah buku" required>
                     </div>
                     <div class="form-group">
-                        <label for="jumlah" class="col-form-label">Tanggal Kembali:</label>
-                        <input type="date" class="form-control" id="jumlah" name="jumlah" placeholder="isi dengan jumlah buku" required>
+                        <label for="tanggal_kembali" class="col-form-label">Tanggal Kembali:</label>
+                        <input type="date" class="form-control" id="tanggal_kembali" name="tanggal_kembali" placeholder="isi dengan jumlah buku" required>
                     </div>
                 </div>
                 <div class="modal-footer">

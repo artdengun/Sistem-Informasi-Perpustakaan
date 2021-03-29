@@ -1,5 +1,6 @@
 package com.deni.gunawan.Sisteminformasiperpustakaan.controller;
 
+import com.deni.gunawan.Sisteminformasiperpustakaan.model.Buku;
 import com.deni.gunawan.Sisteminformasiperpustakaan.model.Peminjaman;
 import com.deni.gunawan.Sisteminformasiperpustakaan.service.AnggotaService;
 import com.deni.gunawan.Sisteminformasiperpustakaan.service.BukuService;
@@ -28,9 +29,8 @@ public class PeminjamanController {
     }
 
     @PostMapping("peminjaman/tambahData")
-    public String tambahData(Peminjaman peminjaman){
+    public String tambahPeminjaman(Peminjaman peminjaman){
         peminjamanService.save(peminjaman);
-
         return "redirect:/peminjaman";
     }
 

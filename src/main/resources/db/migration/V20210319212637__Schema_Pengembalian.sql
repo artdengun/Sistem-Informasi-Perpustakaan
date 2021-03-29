@@ -1,5 +1,5 @@
 CREATE TABLE t_pengembalian(
-        id_kembali varchar(36) primary key unique,
+        id_kembali varchar(36) primary key NOT NULL DEFAULT '0',
         pinjaman_id varchar(36),
         tanggal_kembali date,
         terlambat varchar(10),

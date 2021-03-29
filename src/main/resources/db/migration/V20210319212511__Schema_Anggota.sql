@@ -1,6 +1,6 @@
 create table t_anggota(
-    id_anggota  varchar  (36) primary key unique,
-    nama        varchar  (50) not null,
+    id_anggota  varchar  (36) primary key NOT NULL DEFAULT '0',
+    nama        varchar  (200) not null,
     nim         varchar  (50) not null,
     jurusan     varchar  (50) not null,
     angkatan    varchar  (50) not null,

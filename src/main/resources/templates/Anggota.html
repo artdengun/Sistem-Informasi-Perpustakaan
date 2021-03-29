@@ -188,7 +188,6 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                            <th>ID Anggota</th>
                                             <th>Nama</th>
                                             <th>Nim</th>
                                             <th>Jurusan</th>
@@ -199,7 +198,6 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>ID Anggota</th>
                                             <th>Nama</th>
                                             <th>Nim</th>
                                             <th>Jurusan</th>
@@ -210,7 +208,6 @@
                                     </tfoot>
                                     <tbody>
                                         <tr th:each="anggota:${anggotas}">
-                                            <td th:text="${anggota.id_anggota}"></td>
                                             <td th:text="${anggota.nama}"></td>
                                             <td th:text="${anggota.nim}"></td>
                                             <td th:text="${anggota.jurusan}"></td>
@@ -273,10 +270,6 @@
                 </div>
 
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="id_anggota" class="col-form-label">ID Anggota:</label>
-                        <input type="text" class="form-control" id="id_anggota" name="id_anggota" required>
-                    </div>
                     <div class="form-group">
                         <label for="nama" class="col-form-label">Nama:</label>
                         <input type="text" class="form-control" id="nama" name="nama" required>

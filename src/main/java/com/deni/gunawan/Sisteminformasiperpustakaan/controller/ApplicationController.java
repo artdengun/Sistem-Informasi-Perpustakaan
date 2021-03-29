@@ -29,10 +29,10 @@ public class ApplicationController {
         return "login";
     }
 
-//    @GetMapping("404")
-//    public String error(){
-//        return "404";
-//    }
+    @GetMapping("404")
+    public String error(){
+        return "404";
+    }
 
 
 }

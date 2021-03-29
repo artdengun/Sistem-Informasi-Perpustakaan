@@ -5,6 +5,7 @@
  */
 package com.deni.gunawan.Sisteminformasiperpustakaan.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -28,11 +29,12 @@ import java.util.List;
 public class Anggota {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_anggota", length = 36)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "id_anggota")
     private String id_anggota;
 
-    @Column(name = "nama", length = 50, nullable = false)
+    @Column(name = "nama", length = 200, nullable = false)
     private String nama;
 
     @Column(name = "nim", length = 50, nullable = false)
@@ -48,7 +50,8 @@ public class Anggota {
     @Column(name = "alamat", nullable = false)
     private String alamat;
 
-    @OneToMany(mappedBy = "anggota")
+    @JsonManagedReference
+    @OneToMany(mappedBy = "anggota", fetch = FetchType.EAGER)
     private List<Peminjaman> peminjamanList;
 
 }

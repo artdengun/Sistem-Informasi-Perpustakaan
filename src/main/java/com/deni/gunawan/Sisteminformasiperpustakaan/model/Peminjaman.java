@@ -5,6 +5,8 @@
  */
 package com.deni.gunawan.Sisteminformasiperpustakaan.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +14,9 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,35 +28,42 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "t_peminjaman")
-public class Peminjaman {
+public class Peminjaman  implements Serializable {
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_pinjaman", length = 36)
+    @Id @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name = "id_pinjaman")
     private String id_pinjaman;
 
-    @ManyToOne
-    @JoinColumn(name = "anggota_id", insertable = false, updatable = false)
+
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "nama", insertable = false, updatable = false)
     private Anggota anggota;
-    @Column(name = "anggota_id", nullable = false, length = 36)
-    private String anggota_id;
+    @Column(name = "nama", nullable = false, length = 200)
+    private String nama;
 
-    @ManyToOne
-    @JoinColumn(name = "buku_id", insertable = false, updatable = false)
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "judul", insertable = false, updatable = false)
     private Buku buku;
-    @Column(name = "buku_id", nullable = false, length = 36)
-    private String buku_id;
+    @Column(name = "judul", nullable = false, length = 200)
+    private String judul;
 
-    @OneToMany(mappedBy = "peminjaman")
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "peminjaman", fetch = FetchType.EAGER)
     private List<Pengembalian> pengembalianList;
 
 
-    @Column(name = "tanggal_pinjam", nullable = false)
+    @Column(name = "tanggal_pinjam", columnDefinition = "DATE")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tanggal_pinjam;
 
-    @Column(name = "tanggal_kembali", nullable = false)
+    @Column(name = "tanggal_kembali",  columnDefinition = "DATE")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tanggal_kembali;
 
