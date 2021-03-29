@@ -175,15 +175,15 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data Buku</h1>
-                    <p class="mb-4">Silahkan Untuk mengisi Data Buku Terbaru, <b>PASTIKAN</b>  menginput data sesuai dengan <b>ISBN</b> Terimakasih. <a target="_blank"></p>
+                    <h1 class="h3 mb-2 text-gray-800">Data Peminjam </h1>
+                    <p class="mb-4">Silahkan Untuk mengisi Data Peminjam Buku, <b>PASTIKAN</b>  Menginput Data dengan Benar. Terimakasih<a target="_blank"></p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Buku Perpustakaan</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data Peminjam Perpustakaan</h6>
                         </div>
-                        <button type="button" class="btn btn-primary position-relative" data-toggle="modal" data-target="#addModal">Tambah Buku </button>
+                        <button type="button" class="btn btn-primary position-relative" data-toggle="modal" data-target="#addModal">Tambah Peminjaman </button>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -278,36 +278,34 @@
                         <label for="id_pinjaman" class="col-form-label">ID Pinjaman:</label>
                         <input type="text" class="form-control" id="id_pinjaman" name="id_pinjaman"  placeholder="isi ID Pinjaman" required>
                     </div>
-
                     <div class="form-group">
                         <label for="idAnggotaTambah" class="col-form-label">ID Anggota: </label>
                         <select class="form-control" id="idAnggotaTambah" name="id_anggota">
                             <option>-Pilih-</option>
                             <option th:each="anggota : ${anggotas}"
                                     th:value="${anggota.id_anggota}"
-                                    th:text="${anggota.anggota_id}">
+                                    th:text="${anggota.id_anggota}">
                             </option>
                         </select>
                     </div>
-    `
                     <div class="form-group">
                         <label for="id_anggotaTambah" class="col-form-label">ID Buku: </label>
                         <select class="form-control" id="id_anggotaTambah" name="id_anggota">
                             <option>-Pilih-</option>
                             <option th:each="buku : ${bukus}"
                                     th:value="${buku.id_buku}"
-                                    th:text="${buku.buku_id}">
+                                    th:text="${buku.id_buku}">
                             </option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="jumlah" class="col-form-label">Tanggal Pinjam:</label>
-                        <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="isi dengan jumlah buku" required>
+                        <input type="date" class="form-control" id="jumlah" name="jumlah" placeholder="isi dengan jumlah buku" required>
                     </div>
                     <div class="form-group">
                         <label for="jumlah" class="col-form-label">Tanggal Kembali:</label>
-                        <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="isi dengan jumlah buku" required>
+                        <input type="date" class="form-control" id="jumlah" name="jumlah" placeholder="isi dengan jumlah buku" required>
                     </div>
                 </div>
                 <div class="modal-footer">
