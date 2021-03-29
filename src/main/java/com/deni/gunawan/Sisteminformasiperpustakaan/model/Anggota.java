@@ -54,4 +54,9 @@ public class Anggota {
     @OneToMany(mappedBy = "anggota", fetch = FetchType.EAGER)
     private List<Peminjaman> peminjamanList;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "anggota", fetch = FetchType.EAGER)
+    private List<Pengembalian> pengembalianList;
+
+
 }

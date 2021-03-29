@@ -24,25 +24,25 @@ public class PengembalianController {
         return "Pengembalian";
     }
 
-    @PostMapping("pengembalian/{id}")
+    @PostMapping("pengembalian/tambahData")
     public String tambahData(Pengembalian pengembalian){
         pengembalianService.save(pengembalian);
         return "redirect:/pengembalian";
     }
 
-    @RequestMapping("pengembalian/{id}")
+    @RequestMapping("pengembalian/findById")
     @ResponseBody
     public Optional<Pengembalian> findById(String id){
         return pengembalianService.findById(id);
     }
 
-    @RequestMapping(value = "pengembalian/{id}", method = {RequestMethod.PUT, RequestMethod.GET})
+    @RequestMapping(value = "pengembalian/update", method = {RequestMethod.PUT, RequestMethod.GET})
     public String update(Pengembalian pengembalian){
         pengembalianService.save(pengembalian);
         return "redirect:/pengembalian";
     }
 
-    @RequestMapping(value = "pengembalian/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
+    @RequestMapping(value = "pengembalian/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
     public String delete(String id){
         pengembalianService.delete(id);
         return "redirect:/pengembalian";

@@ -14,8 +14,8 @@
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -65,17 +65,17 @@
                 <span>Anggota</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link"  th:href="@{/peminjaman}">
+            <a class="nav-link" th:href="@{/peminjaman}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Peminjaman</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link"  th:href="@{/buku}">
+            <a class="nav-link" th:href="@{/buku}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Buku</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link"  th:href="@{/pengembalian}">
+            <a class="nav-link" th:href="@{/pengembalian}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Pengembalian</span></a>
         </li>
@@ -171,72 +171,85 @@
 
             </nav>
             <!-- End of Topbar -->
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data Peminjam </h1>
-                    <p class="mb-4">Silahkan Untuk mengisi Data Peminjam Buku, <b>PASTIKAN</b>  Menginput Data dengan Benar. Terimakasih<a target="_blank"></p>
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800">Data Peminjam </h1>
+                <p class="mb-4">Silahkan Untuk mengisi Data Peminjam Buku, <b>PASTIKAN</b> Menginput Data dengan Benar.
+                    Terimakasih<a target="_blank"></p>
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Peminjam Perpustakaan</h6>
-                        </div>
-                        <button type="button" class="btn btn-primary position-relative" data-toggle="modal" data-target="#addModal">Tambah Peminjaman </button>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                    <tr>
-                                        <th>Nama Peminjam </th>
-                                        <th>Nama Buku</th>
-                                        <th>Tanggal Pinjam</th>
-                                        <th>Tanggal Kembali</th>
-                                        <th>Action</th>
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Data Peminjam Perpustakaan</h6>
+                    </div>
+                    <button type="button" class="btn btn-primary position-relative" data-toggle="modal"
+                            data-target="#addModal">Tambah Peminjaman
+                    </button>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Nama Peminjam</th>
+                                    <th>Nama Buku</th>
+                                    <th>Tanggal Pinjam</th>
+                                    <th>Tanggal Kembali</th>
+                                    <th>Action</th>
 
-                                    </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Nama Peminjam </th>
-                                            <th>Nama Buku</th>
-                                            <th>Tanggal Pinjam</th>
-                                            <th>Tanggal Kembali</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr th:each="peminjaman:${peminjamans}">
-                                            <td th:text="${peminjaman.anggota.nama}"></td>
-                                            <td th:text="${peminjaman.buku.judul}"></td>
-                                            <td th:text="${peminjaman.tanggal_pinjam}"></td>
-                                            <td th:text="${peminjaman.tanggal_kembali}"></td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a class="btn btn-primary btn-sm" id="editButton"  th:href="@{/peminjaman/findById/(id=${peminjaman.id_pinjaman})}"><i class="fas fa-edit"></i></a>
-                                                    <a class="btn btn-success btn-sm" id="detailsButton" th:href="@{/peminjaman/findById/(id=${peminjaman.id_pinjaman})}"><i class="fas fa-file-alt"></i></a>
-                                                    <a class="btn btn-danger btn-sm" id="deleteButton" th:href="@{/peminjaman/delete/(id=${peminjaman.id_pinjaman})}"><i class="fas fa-trash-alt"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>Nama Peminjam</th>
+                                    <th>Nama Buku</th>
+                                    <th>Tanggal Pinjam</th>
+                                    <th>Tanggal Kembali</th>
+                                    <th>Action</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <tr th:each="peminjaman:${peminjamans}">
+                                    <td th:text="${peminjaman.anggota.nama}"></td>
+                                    <td th:text="${peminjaman.buku.judul}"></td>
+                                    <td th:text="${peminjaman.tanggal_pinjam}"></td>
+                                    <td th:text="${peminjaman.tanggal_kembali}"></td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a class="btn btn-primary btn-sm" id="editButton"
+                                               th:href="@{/peminjaman/findById/(id=${peminjaman.id_pinjaman})}"><i
+                                                    class="fas fa-edit"></i></a>
+                                            <a class="btn btn-success btn-sm" id="detailsButton"
+                                               th:href="@{/peminjaman/findById/(id=${peminjaman.id_pinjaman})}"><i
+                                                    class="fas fa-file-alt"></i></a>
+                                            <a class="btn btn-danger btn-sm" id="deleteButton"
+                                               th:href="@{/peminjaman/delete/(id=${peminjaman.id_pinjaman})}"><i
+                                                    class="fas fa-trash-alt"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-
                 </div>
-                <!-- /.container-fluid -->
 
             </div>
-            <!-- End of Main Content -->
+            <!-- /.container-fluid -->
 
-            <!-- Footer -->
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    SISPUR | 2020  <script type="text/javascript">new Date().getFullYear()>2020&&document.write(" - "+new Date().getFullYear());</script> <span> &copy; Payangandev Team.</span>
+                    SISPUR | 2020
+                    <script type="text/javascript">
+                        new Date().getFullYear()>2020&&document.write(" - "+new Date().getFullYear());
+                    </script>
+                    <span> &copy; Payangandev Team.</span>
                 </div>
                 <br>
                 <div class="copyright text-center my-auto">
@@ -245,21 +258,22 @@
                 </div>
             </div>
         </footer>
-            <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Footer -->
 
     </div>
-    <!-- End of Page Wrapper -->
+    <!-- End of Content Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
 
 <!-- Tambah Data -->
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <form th:action="@{/peminjaman/tambahData}" method="post">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -271,6 +285,12 @@
                 </div>
 
                 <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="id_pinjamanEdit" class="col-form-label">Invoice Date:</label>
+                        <input type="date" class="form-control" id="id_pinjamanEdit" name="id_pinjaman">
+                    </div>
+
                     <div class="form-group">
                         <label for="anggotaid" class="col-form-label">Nama Peminjam: </label>
                         <select class="form-control" id="anggotaid" name="anggotaid">
@@ -291,14 +311,13 @@
                             </option>
                         </select>
                     </div>
-
                     <div class="form-group">
-                        <label for="tanggal_pinjam" class="col-form-label">Tanggal Pinjam:</label>
-                        <input type="date" class="form-control" id="tanggal_pinjam" name="tanggal_pinjam" placeholder="isi dengan jumlah buku" required>
+                        <label for="invoiceDateDetails" class="col-form-label">Invoice Date:</label>
+                        <input type="date" class="form-control" id="invoiceDateDetails" name="invoiceDate">
                     </div>
                     <div class="form-group">
-                        <label for="tanggal_kembali" class="col-form-label">Tanggal Kembali:</label>
-                        <input type="date" class="form-control" id="tanggal_kembali" name="tanggal_kembali" placeholder="isi dengan jumlah buku" required>
+                        <label for="invoiceDateDetails" class="col-form-label">Invoice Date:</label>
+                        <input type="date" class="form-control" id="invoiceDateDetails" name="invoiceDate">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -312,43 +331,59 @@
 <!-- Akhir Tambah Data -->
 
 <!-- Edit Data -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Data Anggota</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Update Data Peminjaman</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form th:action="@{/buku/update}" method="put">
-                    <div class="form-group">
-                        <label for="idEdit" class="col-form-label">ID Buku:</label>
-                        <input type="text" class="form-control" id="idEdit" name="id_buku" readonly>
-                    </div>
+                <form th:action="@{/peminjaman/update}" method="put">
+                    <div class="modal-body">
 
-                    <div class="form-group">
-                        <label for="judulEdit" class="col-form-label">Judul:</label>
-                        <input type="text" class="form-control" id="judulEdit" name="judul">
-                    </div>
+                        <div class="form-group">
+                            <label for="idPinjamanEdit" class="col-form-label">Id Peminjam:</label>
+                            <input type="text" class="form-control" id="idPinjamanEdit" name="id_pinjaman" readonly>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="pengarangEdit" class="col-form-label">Pengarang:</label>
-                        <input type="text" class="form-control" id="pengarangEdit" name="pengarang">
-                    </div>
+                        <div class="form-group">
+                            <label for="anggotaidEdit" class="col-form-label">Nama Peminjam: </label>
+                            <select class="form-control" id="anggotaidEdit" name="anggotaid">
+                                <option>-Pilih-</option>
+                                <option th:each="anggota : ${anggotas}"
+                                        th:value="${anggota.id_anggota}"
+                                        th:text="${anggota.nama}">
+                                </option>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="penerbitEdit" class="col-form-label">Penerbit:</label>
-                        <input type="text" class="form-control" id="penerbitEdit" name="penerbit">
-                    </div>
+                        <div class="form-group">
+                            <label for="bukuidEdit" class="col-form-label">Judul Buku: </label>
+                            <select class="form-control" id="bukuidEdit" name="bukuid">
+                                <option>-Pilih-</option>
+                                <option th:each="buku : ${bukus}"
+                                        th:value="${buku.id_buku}"
+                                        th:text="${buku.judul}">
+                                </option>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="jumlahEdit" class="col-form-label">Jumlah:</label>
-                        <input type="text" class="form-control" id="jumlahEdit" name="jumlah">
-                    </div>
-                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="tanggalPinjamEdit" class="col-form-label">Tanggal Pinjam:</label>
+                            <input type="text" class="form-control" id="tanggalPinjamEdit" name="tanggal_pinjam">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tanggalKembaliEdit" class="col-form-label">Tanggal Kembali:</label>
+                            <input type="text" class="form-control" id="tanggalKembaliEdit" name="tanggal_kembali">
+                        </div>
+                        <div class="form-group">
                         <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
                     </div>
                 </form>
             </div>
@@ -361,12 +396,13 @@
 <!--  Akhir Edit Data -->
 
 <!--  Detail Data -->
-<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <form th:action="@{/buku/findById}" method="post">
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <form th:action="@{/peminjaman/findById}" method="post">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detail Anggota</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Data Peminjam</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -375,28 +411,28 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label for="id_bukuDetails" class="col-form-label">ID Buku:</label>
-                        <input type="text" class="form-control" id="id_bukuDetails" name="id_bukuDetails"  readonly>
+                        <label for="idPinjamanDetails" class="col-form-label">ID Peminjam:</label>
+                        <input type="text" class="form-control" id="idPinjamanDetails" name="id_pinjaman" readonly>
                     </div>
 
                     <div class="form-group">
-                        <label for="judulDetails" class="col-form-label">Judul:</label>
-                        <input type="text" class="form-control" id="judulDetails" name="judulDetails" readonly>
+                        <label for="anggotaidDetails" class="col-form-label">Nama Peminjam:</label>
+                        <input type="text" class="form-control" id="anggotaidDetails" name="anggotaid" readonly>
                     </div>
 
                     <div class="form-group">
-                        <label for="pengarangDetails" class="col-form-label">Pengarang:</label>
-                        <input type="text" class="form-control" id="pengarangDetails" name="pengarangDetails"  readonly>
+                        <label for="bukuidDetails" class="col-form-label">Judul Buku:</label>
+                        <input type="text" class="form-control" id="bukuidDetails" name="bukuid" readonly>
                     </div>
 
                     <div class="form-group">
-                        <label for="penerbitDetails" class="col-form-label">Penerbit:</label>
-                        <input type="text" class="form-control" id="penerbitDetails" name="penerbitDetails" readonly>
+                        <label for="tanggalPinjamDetails" class="col-form-label">Tanggal Pinjam:</label>
+                        <input type="text" class="form-control" id="tanggalPinjamDetails" name="tanggalDetails" readonly>
                     </div>
 
                     <div class="form-group">
-                        <label for="jumlahDetails" class="col-form-label">Jumlah:</label>
-                        <input type="text" class="form-control" id="jumlahDetails" name="jumlahDetails" readonly>
+                        <label for="tanggalKembaliDetails" class="col-form-label">Tanggal Kembali:</label>
+                        <input type="text" class="form-control" id="tanggalKembaliDetails" name="kembaliDetails" readonly>
                     </div>
 
                 </div>
@@ -412,7 +448,7 @@
 
 
 <!--  Delete Data -->
-<div class="modal" id="" tabindex="-1" role="dialog">
+<div class="modal" id="deleteModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -431,8 +467,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 <!-- Logout Modal-->
@@ -454,23 +488,23 @@
         </div>
     </div>
 </div>
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-<script src="js/buku.js"></script>
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
+<script src="js/peminjaman.js"></script>
 </body>
 
 </html>

@@ -39,22 +39,28 @@ public class Pengembalian implements Serializable {
     @Column(name = "id_kembali")
     private String id_kembali;
 
-    @Column(name = "tanggal_kembali")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date tanggal_kembali;
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "anggotaid", insertable = false, updatable = false)
+    private Anggota anggota;
+    @Column(name = "anggotaid", nullable = false, length = 200)
+    private String anggotaid;
 
-    @Column(name = "terlambat", length = 10)
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "pinjamanid", insertable = false, updatable = false)
+    private Peminjaman peminjaman;
+    @Column(name = "pinjamanid")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    private String pinjamanid;
+
+    @Column(name = "terlambat", length = 100)
     private String terlambat;
 
     @Column(name = "jumlah_denda", nullable = false)
     private BigDecimal jumlah_denda;
 
 
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "pinjaman_id", insertable = false, updatable = false)
-    private Peminjaman peminjaman;
-    @Column(name = "pinjaman_id", length = 36)
-    private String pinjaman_id;
 }
 
