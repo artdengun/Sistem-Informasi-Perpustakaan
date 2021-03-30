@@ -1,6 +1,7 @@
 package com.deni.gunawan.Sisteminformasiperpustakaan.controller;
 
 import com.deni.gunawan.Sisteminformasiperpustakaan.model.Pengembalian;
+import com.deni.gunawan.Sisteminformasiperpustakaan.service.AnggotaService;
 import com.deni.gunawan.Sisteminformasiperpustakaan.service.PengembalianService;
 import com.deni.gunawan.Sisteminformasiperpustakaan.service.PeminjamanService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,13 @@ import java.util.Optional;
 public class PengembalianController {
 
     @Autowired private PengembalianService pengembalianService;
+    @Autowired private AnggotaService anggotaService;
     @Autowired private PeminjamanService peminjamanService;
 
     @GetMapping("pengembalian")
     public String getPengembalian(Model model){
         model.addAttribute("pengembalians", pengembalianService.getPengembalianList());
+        model.addAttribute("anggotas", anggotaService.getAnggotaList());
         model.addAttribute("peminjamans", peminjamanService.getPeminjamanList());
 
         return "Pengembalian";

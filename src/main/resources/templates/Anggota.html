@@ -15,7 +15,9 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
+    <link rel="stylesheet" href="webjars/sweetalert2/7.28.10/dist/sweetalert2.min.css">
+    <script src="webjars/sweetalert2/7.28.10/dist/sweetalert2.min.js"></script>
+    <script src="webjars/jquery/3.3.1-1/jquery.min.js"></script>
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="icon" href="img/favicon.png">
@@ -176,13 +178,12 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Data Anggota</h1>
                     <p class="mb-4">Silahkan Untuk mengisi Data Anggota , yang meminjam Buku pada perpustakaan ini, pastikan anggota yang terdaftar adalah Mahasiswa. Terimakasih <a target="_blank"></p>
-
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Data Anggota Perpustakaan</h6>
                         </div>
-                        <button type="button" class="btn btn-primary position-relative" data-toggle="modal" data-target="#addModal">Tambah Anggota </button>
+                        <button type="button" class="btn btn-primary position-relative" data-toggle="modal" data-target="#addModal" >Tambah Anggota </button>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -217,7 +218,7 @@
                                                 <div class="btn-group">
                                                     <a class="btn btn-primary btn-sm" id="editButton"  th:href="@{/anggota/findById/(id=${anggota.id_anggota})}"><i class="fas fa-edit"></i></a>
                                                     <a class="btn btn-success btn-sm" id="detailsButton" th:href="@{/anggota/findById/(id=${anggota.id_anggota})}"><i class="fas fa-file-alt"></i></a>
-                                                    <a class="btn btn-danger btn-sm" id="deleteButton" th:href="@{/anggota/delete/(id=${anggota.id_anggota})}"><i class="fas fa-trash-alt"></i></a>
+                                                    <a class="btn btn-danger btn-sm" id="deleteButton"  th:href="@{/anggota/delete/(id=${anggota.id_anggota})}"><i class="fas fa-trash-alt"></i></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -259,7 +260,7 @@
 
     <!-- Tambah Data -->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <form th:action="@{/anggota/tambahData}" method="post">
+    <form th:action="@{/anggota/tambahData}" method="post" >
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -296,7 +297,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary" id="btn-submit">Save</button>
                 </div>
             </div>
         </div>
@@ -455,7 +456,6 @@
             </div>
         </div>
     </div>
-
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

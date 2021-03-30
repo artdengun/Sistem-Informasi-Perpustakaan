@@ -25,6 +25,7 @@ public class AnggotaController {
 
     @PostMapping("anggota/tambahData")
     public String tambahData(Anggota anggota){
+
         anggotaService.save(anggota);
         return "redirect:/anggota";
     }
@@ -32,7 +33,10 @@ public class AnggotaController {
     @RequestMapping("anggota/findById")
     @ResponseBody
     public Optional<Anggota> findById(String id){
-        return anggotaService.findById(id);
+        if (id != null && !id.trim().equals("") && id.equalsIgnoreCase("OK")) {
+            return anggotaService.findById(id);
+        }
+        return null;
     }
 
     @RequestMapping(value = "anggota/update", method = {RequestMethod.PUT, RequestMethod.GET})

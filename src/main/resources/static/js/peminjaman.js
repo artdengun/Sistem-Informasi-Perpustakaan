@@ -24,7 +24,7 @@ $('document').ready(function() {
 		var href= $(this).attr('href');		
 		$.get(href, function(peminjaman, status){
 			$('#idPinjamanDetails').val(peminjaman.id_pinjaman);
-            $('#anggotaidDetails').val(peminjaman.anggota.nama);
+            $('#anggotaidDetails').val(peminjaman.anggotaid);
             $('#bukuidDetails').val(peminjaman.bukuid);
             $('#tanggalPinjamDetails').val(peminjaman.tanggal_pinjam);
             $('#tanggalKembaliDetails').val(peminjaman.tanggal_kembali);
@@ -37,5 +37,7 @@ $('document').ready(function() {
 		var href = $(this).attr('href');
 		$('#deleteModal #delRef').attr('href', href);
 		$('#deleteModal').modal();		
-	});	
+	});
+
+
 });

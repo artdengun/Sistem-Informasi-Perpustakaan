@@ -52,13 +52,12 @@ public class Pengembalian implements Serializable {
     @JoinColumn(name = "pinjamanid", insertable = false, updatable = false)
     private Peminjaman peminjaman;
     @Column(name = "pinjamanid")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private String pinjamanid;
 
     @Column(name = "terlambat", length = 100)
     private String terlambat;
 
-    @Column(name = "jumlah_denda", nullable = false)
+    @Column(name = "jumlah_denda",length = 100)
     private BigDecimal jumlah_denda;
 
 
