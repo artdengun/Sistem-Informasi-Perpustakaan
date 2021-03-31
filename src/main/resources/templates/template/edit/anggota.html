@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<div th:fragment="edit">
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Data Anggota</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/anggota/update}" method="put">
+                        <div class="form-group">
+                            <label for="idEdit" class="col-form-label">ID Anggota:</label>
+                            <input type="text" class="form-control" id="idEdit" name="id_anggota" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="namaEdit" class="col-form-label">Nama:</label>
+                            <input type="text" class="form-control" id="namaEdit" name="nama">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nimEdit" class="col-form-label">Nim:</label>
+                            <input type="text" class="form-control" id="nimEdit" name="nim">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jurusanEdit" class="col-form-label">Jurusan:</label>
+                            <input type="text" class="form-control" id="jurusanEdit" name="Jurusan">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="angkatanEdit" class="col-form-label">Angkatan:</label>
+                            <input type="text" class="form-control" id="angkatanEdit" name="angkatan">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="alamatEdit" class="col-form-label">Alamat:</label>
+                            <input type="text" class="form-control" id="alamatEdit" name="alamat">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<link rel="stylesheet" href="js/anggota.js">
+</body>
+</html>

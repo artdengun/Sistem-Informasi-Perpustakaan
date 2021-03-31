@@ -1,352 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<div th:replace="'template/head' :: head"></div>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<body>
 
-    <title>SISPUR- Buku</title>
-
-    <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="icon" href="img/favicon.png">
-
-    <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
-</head>
-
-<body id="page-top">
-
-<!-- Page Wrapper -->
-<div id="wrapper">
-
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-        <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{/dashboard}">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fab fa-artstation"></i>
-            </div>
-            <div class="sidebar-brand-text mx-3"><sup>sistem informasi perpustakaan</sup></div>
-        </a>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" th:href="@{/dashboard}">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Menu
-        </div>
-        <li class="nav-item">
-            <a class="nav-link" th:href="@{/anggota}">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Anggota</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link"  th:href="@{/peminjaman}">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Peminjaman</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link"  th:href="@{/buku}">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Buku</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link"  th:href="@{/pengembalian}">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Pengembalian</span></a>
-        </li>
-        <hr class="sidebar-divider">
-
-        <div class="sidebar-heading">
-            Laporan
-        </div>
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-               aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Laporan</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Cetak Laporan:</h6>
-                    <a class="collapse-item" href=""><i class="fas fa-file-alt"> Anggota</i></a>
-                    <a class="collapse-item" href=""><i class="fas fa-file-alt"> Buku</i></a>
-                    <a class="collapse-item" href=""><i class="fas fa-file-alt"> Pengembalian</i></a>
-                    <a class="collapse-item" href=""><i class="fas fa-file-alt"> Peminjaman</i></a>
-
-                </div>
-            </div>
-        </li>
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-
-    </ul>
-    <!-- End of Sidebar -->
+<div th:replace="'template/sidebar' :: sidebar"></div>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-
-        <!-- Main Content -->
-        <div id="content">
-
-            <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                <!-- Sidebar Toggle (Topbar) -->
-                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                    <i class="fa fa-bars"></i>
-                </button>
-
-                <!-- Topbar Search -->
-                <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                               aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-
-                <!-- Topbar Navbar -->
-                <ul class="navbar-nav ml-auto">
-
-                    <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                            <img class="img-profile rounded-circle"
-                                 src="img/undraw_profile.svg">
-                        </a>
-                        <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                             aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Settings
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
-                            </a>
-                        </div>
-                    </li>
-
-                </ul>
-
-            </nav>
-            <!-- End of Topbar -->
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data Buku</h1>
-                    <p class="mb-4">Silahkan Untuk mengisi Data Buku Terbaru, <b>PASTIKAN</b>  menginput data sesuai dengan data <b>Mahasiswa</b> Terimakasih. <a target="_blank"></p>
-
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Buku Perpustakaan</h6>
-                        </div>
-                        <button type="button" class="btn btn-primary position-relative" data-toggle="modal" data-target="#addModal">Tambah Buku </button>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                    <tr>
-                                        <th>Judul</th>
-                                        <th>Pengarang</th>
-                                        <th>Penerbit</th>
-                                        <th>Jumlah</th>
-                                        <th>Action</th>
-
-                                    </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Judul</th>
-                                            <th>Pengarang</th>
-                                            <th>Penerbit</th>
-                                            <th>Jumlah</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr th:each="buku:${bukus}">
-                                            <td th:text="${buku.judul}"></td>
-                                            <td th:text="${buku.pengarang}"></td>
-                                            <td th:text="${buku.penerbit}"></td>
-                                            <td th:text="${buku.jumlah}"></td>
-                                            <td>
-                                                <div class="btn-group">
-                                                    <a class="btn btn-primary btn-sm" id="editButton"  th:href="@{/buku/findById/(id=${buku.id_buku})}"><i class="fas fa-edit"></i></a>
-                                                    <a class="btn btn-success btn-sm" id="detailsButton" th:href="@{/buku/findById/(id=${buku.id_buku})}"><i class="fas fa-file-alt"></i></a>
-                                                    <a class="btn btn-danger btn-sm" id="deleteButton" th:href="@{/buku/delete/(id=${buku.id_buku})}"><i class="fas fa-trash-alt"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- /.container-fluid -->
-
-            </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    SISPUR | 2020  <script type="text/javascript">new Date().getFullYear()>2020&&document.write(" - "+new Date().getFullYear());</script> <span> &copy; Payangandev Team.</span>
-                </div>
-                <br>
-                <div class="copyright text-center my-auto">
-                    <span>Developer by</span>
-                    <a href="https://github.com/denigunawan">Deni Gunawan</a>
-                </div>
-            </div>
-        </footer>
-            <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
+      <!-- content -->
+      <div th:replace="'template/content/buku' :: content"></div>
+      <!-- end content-->
+      <!-- Footer -->
+      <div th:replace="'template/footer' :: footer"></div>
+      <!-- End of Footer -->
 
     </div>
     <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
 <!-- Tambah Data -->
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <form th:action="@{/buku/tambahData}" method="post">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Buku</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="judul" class="col-form-label">Judul:</label>
-                        <input type="text" class="form-control" id="judul" name="judul"  placeholder="Masukan judul buku" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="pengarang" class="col-form-label">Pengarang:</label>
-                        <input type="text" class="form-control" id="pengarang" name="pengarang" placeholder="Masukan pengarang" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="penerbit" class="col-form-label">Penerbit:</label>
-                        <input type="text" class="form-control" id="penerbit" name="penerbit" placeholder="Masukan  penerbit" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="jumlah" class="col-form-label">Jumlah:</label>
-                        <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="Masukan jumlah buku" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+<div th:replace="'template/add/buku' :: tambah"></div>
 <!-- Akhir Tambah Data -->
 
 <!-- Edit Data -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Data Buku</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form th:action="@{/buku/update}" method="put">
-                    <div class="form-group">
-                        <label for="idEdit" class="col-form-label">ID Buku:</label>
-                        <input type="text" class="form-control" id="idEdit" name="id_buku" readonly>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="judulEdit" class="col-form-label">Judul:</label>
-                        <input type="text" class="form-control" id="judulEdit" name="judul">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="pengarangEdit" class="col-form-label">Pengarang:</label>
-                        <input type="text" class="form-control" id="pengarangEdit" name="pengarang">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="penerbitEdit" class="col-form-label">Penerbit:</label>
-                        <input type="text" class="form-control" id="penerbitEdit" name="penerbit">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="jumlahEdit" class="col-form-label">Jumlah:</label>
-                        <input type="text" class="form-control" id="jumlahEdit" name="jumlah">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+<div th:replace="'template/edit/buku' :: edit"></div>
 <!--  Akhir Edit Data -->
 
 <!--  Detail Data -->
@@ -427,42 +105,10 @@
 
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Anda yakin mau keluar?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">pilih 'keluar' jika ingin mengakhiri session ini</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a class="btn btn-primary" href="login.html">Keluar</a>
-            </div>
-        </div>
-    </div>
-</div>
+<div th:replace="'template/logout' :: logout"></div>
+<!-- logout end-->
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-<script src="js/buku.js"></script>
+<div th:replace="'template/javascript' :: js"></div>
 </body>
 
 </html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<div th:fragment="details">
+
+    <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form th:action="@{/anggota/findById}" method="post">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Detail Anggota</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="id_anggotaDetails" class="col-form-label">ID Anggota:</label>
+                            <input type="text" class="form-control" id="id_anggotaDetails" name="id_anggotaDetails"  readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="namaDetails" class="col-form-label">Nama:</label>
+                            <input type="text" class="form-control" id="namaDetails" name="namaDetails" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nimDetails" class="col-form-label">Nim:</label>
+                            <input type="text" class="form-control" id="nimDetails" name="nimDetails"  readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jurusanDetails" class="col-form-label">Jurusan:</label>
+                            <input type="text" class="form-control" id="jurusanDetails" name="jurusanDetails" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="angkatanDetails" class="col-form-label">Angkatan:</label>
+                            <input type="text" class="form-control" id="angkatanDetails" name="angkatanDetails" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="alamatDetails" class="col-form-label">Alamat:</label>
+                            <input type="text" class="form-control" id="alamatDetails" name="alamatDetails" readonly>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<link rel="stylesheet" href="js/anggota.js">
+</body>
+</html>

@@ -5,9 +5,7 @@
  */
 package com.deni.gunawan.Sisteminformasiperpustakaan.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +26,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "t_peminjaman")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_pinjaman")
 public class Peminjaman  implements Serializable {
 
 

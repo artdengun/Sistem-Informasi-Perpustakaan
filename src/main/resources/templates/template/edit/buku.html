@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    
+    <body>
+       <div th:fragment="edit">
+
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update Data Buku</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{/buku/update}" method="put">
+                            <div class="form-group">
+                                <label for="idEdit" class="col-form-label">ID Buku:</label>
+                                <input type="text" class="form-control" id="idEdit" name="id_buku" readonly>
+                            </div>
+        
+                            <div class="form-group">
+                                <label for="judulEdit" class="col-form-label">Judul:</label>
+                                <input type="text" class="form-control" id="judulEdit" name="judul">
+                            </div>
+        
+                            <div class="form-group">
+                                <label for="pengarangEdit" class="col-form-label">Pengarang:</label>
+                                <input type="text" class="form-control" id="pengarangEdit" name="pengarang">
+                            </div>
+        
+                            <div class="form-group">
+                                <label for="penerbitEdit" class="col-form-label">Penerbit:</label>
+                                <input type="text" class="form-control" id="penerbitEdit" name="penerbit">
+                            </div>
+        
+                            <div class="form-group">
+                                <label for="jumlahEdit" class="col-form-label">Jumlah:</label>
+                                <input type="text" class="form-control" id="jumlahEdit" name="jumlah">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+         </div>
+       </div>
+       <link rel="stylesheet" href="js/buku.js">
+    </body>
+</html>

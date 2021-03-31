@@ -7,6 +7,8 @@ package com.deni.gunawan.Sisteminformasiperpustakaan.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -31,6 +33,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "t_pengembalian")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id_kembali")
 public class Pengembalian implements Serializable {
 
     @Id
@@ -57,7 +60,7 @@ public class Pengembalian implements Serializable {
     @Column(name = "terlambat", length = 100)
     private String terlambat;
 
-    @Column(name = "jumlah_denda",length = 100)
+    @Column(name = "jumlah_denda")
     private BigDecimal jumlah_denda;
 
 
