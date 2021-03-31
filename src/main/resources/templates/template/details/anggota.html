@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-<div th:fragment="details">
+<div th:fragment="detail">
 
     <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <form th:action="@{/anggota/findById}" method="post">
@@ -53,7 +53,5 @@
         </form>
     </div>
 </div>
-
-<link rel="stylesheet" href="js/anggota.js">
 </body>
 </html>
