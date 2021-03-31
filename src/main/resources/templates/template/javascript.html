@@ -15,8 +15,17 @@
     <!-- Page level plugins -->
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="www://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"></script>
+    <script src="www://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+
+    <script>
+        $(document).ready( function () {
+    $('#myTable').DataTable();
+        } );
+    </script>
 </div>
 </body>
 </html>
