@@ -86,7 +86,7 @@
                                 <th>Jurusan</th>
                                 <th>Angkatan</th>
                                 <th>Alamat</th>
-                                <th>Action</th>
+                                <th sec:authorize="hasRole('ADMIN')" >Action</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -96,7 +96,7 @@
                                 <th>Jurusan</th>
                                 <th>Angkatan</th>
                                 <th>Alamat</th>
-                                <th>Action</th>
+                                <th sec:authorize="hasRole('ADMIN')"> Action</th>
                             </tr>
                             </tfoot>
                             <tbody>
@@ -106,11 +106,11 @@
                                 <td th:text="${anggota.jurusan}"></td>
                                 <td th:text="${anggota.angkatan}"></td>
                                 <td th:text="${anggota.alamat}"></td>
-                                <td>
+                                <td  sec:authorize="hasRole('ADMIN')">
                                     <div class="btn-group">
-                                        <a class="btn btn-primary btn-sm" id="editButton"  th:href="@{/anggota/findById/(id=${anggota.id_anggota})}"><i class="fas fa-edit"></i></a>
-                                        <a class="btn btn-success btn-sm" id="detailsButton" th:href="@{/anggota/findById/(id=${anggota.id_anggota})}"><i class="fas fa-file-alt"></i></a>
-                                        <a class="btn btn-danger btn-sm" id="deleteButton"  th:href="@{/anggota/delete/(id=${anggota.id_anggota})}"><i class="fas fa-trash-alt"></i></a>
+                                        <a sec:authorize="hasRole('ADMIN')" class="btn btn-primary btn-sm" id="editButton"   th:href="@{/anggota/findById/(id=${anggota.id_anggota})}"><i class="fas fa-edit"></i></a>
+                                        <a sec:authorize="hasRole('ADMIN')"class="btn btn-success btn-sm" id="detailsButton" th:href="@{/anggota/findById/(id=${anggota.id_anggota})}"><i class="fas fa-file-alt"></i></a>
+                                        <a sec:authorize="hasRole('ADMIN')"class="btn btn-danger btn-sm" id="deleteButton"  th:href="@{/anggota/delete/(id=${anggota.id_anggota})}"><i class="fas fa-trash-alt"></i></a>
                                     </div>
                                 </td>
                             </tr>
