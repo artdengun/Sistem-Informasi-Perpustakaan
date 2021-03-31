@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+   
+    <body>
+       <div th:fragment="detail">
+
+        <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <form th:action="@{/buku/findById}" method="post">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Detail Buku</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+        
+                        <div class="modal-body">
+        
+                            <div class="form-group">
+                                <label for="id_bukuDetails" class="col-form-label">ID Buku:</label>
+                                <input type="text" class="form-control" id="id_bukuDetails" name="id_bukuDetails"  readonly>
+                            </div>
+        
+                            <div class="form-group">
+                                <label for="judulDetails" class="col-form-label">Judul:</label>
+                                <input type="text" class="form-control" id="judulDetails" name="judulDetails" readonly>
+                            </div>
+        
+                            <div class="form-group">
+                                <label for="pengarangDetails" class="col-form-label">Pengarang:</label>
+                                <input type="text" class="form-control" id="pengarangDetails" name="pengarangDetails"  readonly>
+                            </div>
+        
+                            <div class="form-group">
+                                <label for="penerbitDetails" class="col-form-label">Penerbit:</label>
+                                <input type="text" class="form-control" id="penerbitDetails" name="penerbitDetails" readonly>
+                            </div>
+        
+                            <div class="form-group">
+                                <label for="jumlahDetails" class="col-form-label">Jumlah:</label>
+                                <input type="text" class="form-control" id="jumlahDetails" name="jumlahDetails" readonly>
+                            </div>
+        
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+       </div>
+    </body>
+</html>
