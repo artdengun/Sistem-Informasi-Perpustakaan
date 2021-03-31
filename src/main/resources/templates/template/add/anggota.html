@@ -2,51 +2,49 @@
 <html lang="en">
 <body>
 <div th:fragment="tambah">
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <form th:action="@{/anggota/tambahData}" method="post" >
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Anggota</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="nama" class="col-form-label">Nama:</label>
-                        <input type="text" class="form-control" id="nama" name="nama" required>
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form th:action="@{/anggota/tambahData}" method="post">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Tambah Data Anggota</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-
-                    <div class="form-group">
-                        <label for="nim" class="col-form-label">Nim:</label>
-                        <input type="text" class="form-control" id="nim" name="nim" required>
+    
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="nama" class="col-form-label"> Nama :</label>
+                            <input type="text" class="form-control" id="nama" name="nama"  placeholder="Masukan Nama Kamu" required>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="nim" class="col-form-label"> Nim :</label>
+                            <input type="text" class="form-control" id="nim" name="nim" placeholder="Masukan Nim Kamu" required>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="jurusan" class="col-form-label"> Jurusan :</label>
+                            <input type="text" class="form-control" id="jurusan" name="jurusan" placeholder="Masukan Jurusan Kamu" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="angkatan" class="col-form-label"> Angkatan :</label>
+                            <input type="text" class="form-control" id="angkatan" name="angkatan" placeholder="Masukan Angkatan Kamu" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat" class="col-form-label"> Alamat :</label>
+                            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan Alamat Kamu" required>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="jurusan" class="col-form-label">Jurusan:</label>
-                        <input type="text" class="form-control" id="jurusan" name="jurusan" required>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </div>
-
-                    <div class="form-group">
-                        <label for="angkatan" class="col-form-label">Angkatan:</label>
-                        <input type="text" class="form-control" id="angkatan" name="angkatan" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="alamat" class="col-form-label">Alamat:</label>
-                        <input type="text" class="form-control" id="alamat" name="alamat" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" id="btn-submit">Save</button>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
-</div>
-<link rel="stylesheet" href="js/anggota.js">
 </body>
 </html>

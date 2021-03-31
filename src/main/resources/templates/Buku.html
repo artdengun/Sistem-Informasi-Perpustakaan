@@ -1,51 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <div th:replace="'template/head' :: head"></div>
 
 <body>
 
-<div th:replace="'template/sidebar' :: sidebar"></div>
+    <div th:replace="'template/sidebar' :: sidebar"></div>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-      <!-- content -->
-        <div th:replace="'template/content/buku' :: content"></div>
-      <!-- end content-->
-      <!-- Footer -->
-      <div th:replace="'template/footer' :: footer"></div>
-      <!-- End of Footer -->
+        
+    <!-- content -->
+    <div th:replace="'template/content/buku' :: content"></div>
+    <!-- end content-->
+
+    <!-- Footer -->
+    <div th:replace="'template/footer' :: footer"></div>
+    <!-- End of Footer -->
 
     </div>
     <!-- End of Page Wrapper -->
 
-<!-- Tambah Data -->
-<div th:replace="'template/add/buku' :: tambah"></div>
-<!-- Akhir Tambah Data -->
+    <!-- Tambah Data -->
+    <div th:replace="'template/add/buku' :: tambah"></div>
+    <!-- Akhir Tambah Data -->
 
-<!-- Edit Data -->
-<div th:replace="'template/edit/buku' :: edit"></div>
-<!--  Akhir Edit Data -->
+    <!-- Edit Data -->
+    <div th:replace="'template/edit/buku' :: edit"></div>
+    <!--  Akhir Edit Data -->
 
-<!--  Detail Data -->
-<div th:replace="'template/details/buku' :: detail"></div>
-<!--  Detail Data -->
+    <!--  Detail Data -->
+    <div th:replace="'template/details/buku' :: detail"></div>
+    <!--  Detail Data -->
 
-<!--  Delete Data -->
-<div th:replace="'template/delete/buku' :: delete"></div>
-<!-- Akhir Delete Data -->
+    <!--  Delete Data -->
+    <div th:replace="'template/delete/buku' :: delete"></div>
+    <!-- Akhir Delete Data -->
 
 
 
-<!-- Logout Modal-->
-<div th:replace="'template/logout' :: logout"></div>
-<!-- logout end-->
+    <!-- Logout Modal-->
+    <div th:replace="'template/logout' :: logout"></div>
+    <!-- logout end-->
 
-<div th:replace="'template/javascript' :: js"></div>
+    <div th:replace="'template/javascript' :: js"></div>
 
-<!-- Internal JS -->
-<script src="js/buku.js"></script>
-<!-- Internal JS -->
+    <!-- Internal JS -->
+    <script src="js/buku.js"></script>
+    <!-- Internal JS -->
 
 </body>
 

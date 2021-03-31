@@ -3,7 +3,7 @@
 <div th:replace="'template/head' :: head"></div>
 <body>
 
-<div th:replace="'template/sidebar' :: sidebar"></div>
+    <div th:replace="'template/sidebar' :: sidebar"></div>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -28,7 +28,7 @@
     <!--  Akhir Edit Data -->
 
     <!--  Detail Data -->
-    <div th:replace="'template/details/anggota' :: details"></div>
+    <div th:replace="'template/details/anggota' :: detail"></div>
     <!--  Detail Data -->
 
     <!--  Delete Data -->
@@ -42,6 +42,10 @@
     <!-- js -->
     <div th:replace="'template/javascript' :: js"></div>
     <!-- js -->
+
+    <!-- Internal Javascript -->
+    <script src="js/anggota.js"></script>
+    <!--Close Internal Javascript-->
 </body>
 
 </html>
