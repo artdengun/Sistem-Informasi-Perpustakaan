@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    
+    <body>
+      <div th:fragment="detail">
+        <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+       <form th:action="@{/peminjaman/findById}" method="post">
+           <div class="modal-dialog modal-lg" role="document">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h5 class="modal-title" id="exampleModalLabel">Detail Data Peminjam</h5>
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                       </button>
+                   </div>
+   
+                   <div class="modal-body">
+   
+                       <div class="form-group">
+                           <label for="idPinjamanDetails" class="col-form-label">ID Peminjam:</label>
+                           <input type="text" class="form-control" id="idPinjamanDetails" name="id_pinjaman" readonly>
+                       </div>
+   
+                       <div class="form-group">
+                           <label for="anggotaidDetails" class="col-form-label">Nama Peminjam: </label>
+                           <select class="form-control" id="anggotaidDetails" name="anggotaid">
+                               <option>-Pilih-</option>
+                               <option th:each="anggota : ${anggotas}"
+                                       th:value="${anggota.id_anggota}"
+                                       th:text="${anggota.nama}">
+                               </option>
+                           </select>
+                       </div>
+   
+                       <div class="form-group" aria-readonly="true">
+                           <label for="bukuidDetails" class="col-form-label">Judul Buku: </label>
+                           <select class="form-control" id="bukuidDetails" name="bukuid">
+                               <option>-Pilih-</option>
+                               <option th:each="buku : ${bukus}"
+                                       th:value="${buku.id_buku}"
+                                       th:text="${buku.judul}">
+                               </option>
+                           </select>
+                       </div>
+   
+                       <div class="form-group">
+                           <label for="tanggalPinjamDetails" class="col-form-label">Tanggal Pinjam:</label>
+                           <input type="text" class="form-control" id="tanggalPinjamDetails" name="tanggal_pinjam" readonly>
+                       </div>
+   
+                       <div class="form-group">
+                           <label for="tanggalKembaliDetails" class="col-form-label">Tanggal Kembali:</label>
+                           <input type="text" class="form-control" id="tanggalKembaliDetails" name="tanggal_kembali" readonly>
+                       </div>
+   
+                   </div>
+                   <div class="modal-footer">
+                       <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                   </div>
+               </div>
+           </div>
+       </form>
+   </div>
+      </div>
+    </body>
+</html>

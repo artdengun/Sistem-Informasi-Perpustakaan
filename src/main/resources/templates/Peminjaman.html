@@ -1,278 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-
 <div th:replace="'template/head' :: head"></div>
-
 <body id="page-top">
-
-<!-- Page Wrapper -->
-<div id="wrapper">
-
     <div th:replace="'template/sidebar' :: sidebar"></div>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
-        <!-- Main Content -->
-        <div id="content">
+    <!-- Content -->
+    <div th:replace="'template/content/peminjaman' :: content"></div>
+    <!-- Content-->
 
-
-
-            <div th:replace="'template/footer' :: footer"></div>
+    <!-- Footer -->
+    <div th:replace="'template/footer' :: footer"></div>
+    <!-- Close Footer-->
 
     </div>
     <!-- End of Content Wrapper -->
 
-</div>
-<!-- End of Page Wrapper -->
+    <!-- Tambah Data -->
+    <div th:replace="'template/add/peminjaman' :: tambah"></div>
+    <!-- Akhir Tambah Data -->
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
+    <!-- Edit Data -->
+    <div th:replace="'template/edit/peminjaman' :: edit"></div>
+    <!--  Akhir Edit Data -->
 
-<!-- Tambah Data -->
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <form th:action="@{/peminjaman/tambahData}" method="post">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Peminjam</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+    <!--  Detail Data -->
+    <div th:replace="'template/details/peminjaman' :: detail"></div>
+    <!--  Detail Data -->
 
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="anggotaid" class="col-form-label">Nama Peminjam: </label>
-                        <select class="form-control" id="anggotaid" name="anggotaid">
-                            <option>-Pilih-</option>
-                            <option th:each="anggota : ${anggotas}"
-                                    th:value="${anggota.id_anggota}"
-                                    th:text="${anggota.nama}">
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="bukuid" class="col-form-label">Judul Buku: </label>
-                        <select class="form-control" id="bukuid" name="bukuid">
-                            <option>-Pilih-</option>
-                            <option th:each="buku : ${bukus}"
-                                    th:value="${buku.id_buku}"
-                                    th:text="${buku.judul}">
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="tanggal_pinjam" class="col-form-label">Tanggal Pinjam:</label>
-                        <input type="date" class="form-control" id="tanggal_pinjam" name="tanggal_pinjam">
-                    </div>
-                    <div class="form-group">
-                        <label for="tanggal_kembali" class="col-form-label">Tanggal Kembali:</label>
-                        <input type="date" class="form-control" id="tanggal_kembali" name="tanggal_kembali">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
-<!-- Akhir Tambah Data -->
+    <!--  Delete Data -->
+    <div th:replace="'template/delete/peminjaman' :: delete"></div>
+    <!-- Close Delete Data-->
 
-<!-- Edit Data -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Data Peminjaman</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form th:action="@{/peminjaman/update}" method="put">
-                    <div class="modal-body">
+    <!-- Logout Modal-->
+    <div th:replace="'template/logout' :: logout"></div>
+    <!-- End Logout-->
 
-                        <div class="form-group">
-                            <label for="idPinjamanEdit" class="col-form-label">Id Peminjam:</label>
-                            <input type="text" class="form-control" id="idPinjamanEdit" name="id_pinjaman" readonly>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="anggotaidEdit" class="col-form-label">Nama Peminjam: </label>
-                            <select class="form-control" id="anggotaidEdit" name="anggotaid">
-                                <option>-Pilih-</option>
-                                <option th:each="anggota : ${anggotas}"
-                                        th:value="${anggota.id_anggota}"
-                                        th:text="${anggota.nama}">
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="bukuidEdit" class="col-form-label">Judul Buku: </label>
-                            <select class="form-control" id="bukuidEdit" name="bukuid">
-                                <option>-Pilih-</option>
-                                <option th:each="buku : ${bukus}"
-                                        th:value="${buku.id_buku}"
-                                        th:text="${buku.judul}">
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="tanggalPinjamEdit" class="col-form-label">Tanggal Pinjam:</label>
-                            <input type="text" class="form-control" id="tanggalPinjamEdit" name="tanggal_pinjam">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="tanggalKembaliEdit" class="col-form-label">Tanggal Kembali:</label>
-                            <input type="text" class="form-control" id="tanggalKembaliEdit" name="tanggal_kembali">
-                        </div>
-                        <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!--  Akhir Edit Data -->
-
-<!--  Detail Data -->
-<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <form th:action="@{/peminjaman/findById}" method="post">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detail Data Peminjam</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-
-                    <div class="form-group">
-                        <label for="idPinjamanDetails" class="col-form-label">ID Peminjam:</label>
-                        <input type="text" class="form-control" id="idPinjamanDetails" name="id_pinjaman" readonly>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="anggotaidDetails" class="col-form-label">Nama Peminjam: </label>
-                        <select class="form-control" id="anggotaidDetails" name="anggotaid">
-                            <option>-Pilih-</option>
-                            <option th:each="anggota : ${anggotas}"
-                                    th:value="${anggota.id_anggota}"
-                                    th:text="${anggota.nama}">
-                            </option>
-                        </select>
-                    </div>
-
-                    <div class="form-group" aria-readonly="true">
-                        <label for="bukuidDetails" class="col-form-label">Judul Buku: </label>
-                        <select class="form-control" id="bukuidDetails" name="bukuid">
-                            <option>-Pilih-</option>
-                            <option th:each="buku : ${bukus}"
-                                    th:value="${buku.id_buku}"
-                                    th:text="${buku.judul}">
-                            </option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tanggalPinjamDetails" class="col-form-label">Tanggal Pinjam:</label>
-                        <input type="text" class="form-control" id="tanggalPinjamDetails" name="tanggal_pinjam" readonly>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tanggalKembaliDetails" class="col-form-label">Tanggal Kembali:</label>
-                        <input type="text" class="form-control" id="tanggalKembaliDetails" name="tanggal_kembali" readonly>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
-
-<!--  Detail Data -->
+    <!-- External javascript and bootstrap-->
+    <div th:replace="'template/javascript' :: js"></div>
+    <!-- External javascript and bootstrap-->
 
 
-<!--  Delete Data -->
-<div class="modal" id="deleteModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Konfirmasi Delete Data Peminjaman</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Apakah Kamu Yakin Menghapus Data Peminjaman?</p>
-            </div>
-            <div class="modal-footer">
-                <a class="btn btn-danger" id="confirmDeleteButton" href="">Hapus</a>
-                <button type="button" class="btn btn-success" data-dismiss="modal">Batal</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> Anda yakin mau keluar?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">pilih 'keluar' jika ingin mengakhiri session ini</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a class="btn btn-primary" href="login.html">Keluar</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
-
-<!-- Page level plugins -->
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="js/demo/datatables-demo.js"></script>
-<script src="js/peminjaman.js"></script>
+<!-- internal javascript -->
+    <script src="js/peminjaman.js"></script>
+<!-- end internal javascript-->
 </body>
-
 </html>

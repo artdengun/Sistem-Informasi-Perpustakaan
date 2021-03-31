@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    
+    <body>
+      <div th:fragment="edit">
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+       <div class="modal-dialog" role="document">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h5 class="modal-title" id="exampleModalLabel">Update Data Peminjaman</h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                   </button>
+               </div>
+               <div class="modal-body">
+                   <form th:action="@{/peminjaman/update}" method="put">
+                       <div class="modal-body">
+   
+                           <div class="form-group">
+                               <label for="idPinjamanEdit" class="col-form-label">Id Peminjam:</label>
+                               <input type="text" class="form-control" id="idPinjamanEdit" name="id_pinjaman" readonly>
+                           </div>
+   
+                           <div class="form-group">
+                               <label for="anggotaidEdit" class="col-form-label">Nama Peminjam: </label>
+                               <select class="form-control" id="anggotaidEdit" name="anggotaid">
+                                   <option>-Pilih-</option>
+                                   <option th:each="anggota : ${anggotas}"
+                                           th:value="${anggota.id_anggota}"
+                                           th:text="${anggota.nama}">
+                                   </option>
+                               </select>
+                           </div>
+   
+                           <div class="form-group">
+                               <label for="bukuidEdit" class="col-form-label">Judul Buku: </label>
+                               <select class="form-control" id="bukuidEdit" name="bukuid">
+                                   <option>-Pilih-</option>
+                                   <option th:each="buku : ${bukus}"
+                                           th:value="${buku.id_buku}"
+                                           th:text="${buku.judul}">
+                                   </option>
+                               </select>
+                           </div>
+   
+                           <div class="form-group">
+                               <label for="tanggalPinjamEdit" class="col-form-label">Tanggal Pinjam:</label>
+                               <input type="text" class="form-control" id="tanggalPinjamEdit" name="tanggal_pinjam">
+                           </div>
+   
+                           <div class="form-group">
+                               <label for="tanggalKembaliEdit" class="col-form-label">Tanggal Kembali:</label>
+                               <input type="text" class="form-control" id="tanggalKembaliEdit" name="tanggal_kembali">
+                           </div>
+                           <div class="form-group">
+                           <button type="submit" class="btn btn-primary">Submit</button>
+                       </div>
+                       </div>
+                   </form>
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               </div>
+           </div>
+       </div>
+   </div>
+      </div>
+    </body>
+</html>
