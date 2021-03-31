@@ -67,9 +67,15 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Data Anggota Perpustakaan</h6>
+                    <a type="button" class="btn btn-outline-danger btn-sm fa-pull-right shadow-sm rounded"
+                       th:href="@{/anggota/report/pdf/LaporanAnggota}">Export
+                        PDF</a>
+                    <a type="button" class="btn btn-outline-success btn-sm fa-pull-right shadow-sm rounded mr-2"
+                       th:href="@{/anggota/report/excel/LaporanAnggota}">Export
+                        Excel</a>
                 </div>
-                <button type="button" class="btn btn-primary position-relative" data-toggle="modal" data-target="#addModal" >Tambah Anggota </button>
-                <div class="card-body">
+                <button type=" button" class="btn btn-primary btn-sm  ml-2 mr-2 shadow-lg rounded "
+                        data-toggle="modal" data-target="#addModal">Tambah Anggota </button>                <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
