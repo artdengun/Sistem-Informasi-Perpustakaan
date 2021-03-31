@@ -40,7 +40,7 @@ public class ReportController {
     @ResponseBody
     public void getPdf(HttpServletResponse response) throws Exception{
         // kita definisikan lokasi reportnya
-        Resource resource = context.getResource("classpath:reports/anggota.jrxml");
+        Resource resource = context.getResource("classpath:reports/buku.jrxml");
         // kita compile dengan jasperReports
         InputStream inputStream = resource.getInputStream();
         JasperReport report = JasperCompileManager.compileReport(inputStream);
