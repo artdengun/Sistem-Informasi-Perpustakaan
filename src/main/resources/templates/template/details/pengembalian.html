@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div th:fragment="detail">
+        <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <form th:action="@{/pengembalian/findById}" method="post">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Detail pengembalian</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label for="idPengembalianDetails" class="col-form-label">ID Pengembalian:</label>
+                                <input type="text" class="form-control" id="idPengembalianDetails" name="id_kembali" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="namaDetails" class="col-form-label">Nama Peminjam: </label>
+                                <select class="form-control" id="namaDetails" name="anggotaid" disabled>
+                                    <option>-Pilih-</option>
+                                    <option th:each="anggota : ${anggotas}"
+                                            th:value="${anggota.id_anggota}"
+                                            th:text="${anggota.nama}">
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tanggalKembaliDetails" class="col-form-label">Tanggal Kembali: </label>
+                                <select class="form-control" id="tanggalKembaliDetails" name="pinjamanid" disabled>
+                                    <option>-Pilih-</option>
+                                    <option th:each="peminjaman : ${peminjamans}"
+                                            th:value="${peminjaman.id_pinjaman}"
+                                            th:text="${peminjaman.tanggal_kembali}">
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="terlambatDetails" class="col-form-label">Terlambat:</label>
+                                <input type="text" class="form-control" id="terlambatDetails" name="terlambat" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="jumlahDetails" class="col-form-label">Jumlah Denda:</label>
+                                <input type="text" class="form-control" id="jumlahDetails" name="jumlah_denda" readonly>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
