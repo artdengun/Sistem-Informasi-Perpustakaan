@@ -42,14 +42,9 @@ values ('p003', 'Mengelola Aplikasi Perpustakaan', 'DEVELOPER');
 insert into s_roles_permissions (id_role, id_permission)
 values ('m001', 'p001');
 
---insert into s_roles_permissions (id_role, id_permission)
---values ('a001', 'p001');
-
 insert into s_roles_permissions (id_role, id_permission)
 values ('a001', 'p002');
 
-insert into s_roles_permissions (id_role, id_permission)
-values ('d001', 'p001');
 
 insert into s_roles_permissions (id_role, id_permission)
 values ('d001', 'p002');

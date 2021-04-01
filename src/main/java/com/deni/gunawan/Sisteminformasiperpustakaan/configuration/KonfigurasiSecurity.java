@@ -51,30 +51,29 @@ public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
+    public SwitchUserFilter switchUserFilter() throws Exception {
+        SwitchUserFilter filter = new SwitchUserFilter();
+        filter.setUserDetailsService(userDetailsService());
+        filter.setSwitchUserUrl("/switchuser/form");
+        filter.setExitUserUrl("/switchuser/exit");
+        filter.setTargetUrl("/transaksi/list");
+        return filter;
+    }
+    @Bean
     public PasswordEncoder bcryptEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/logout").permitAll()
-                .antMatchers("/anggota", "/buku", "/pengambilan", "peminjaman").permitAll()
-                .antMatchers("/anggota/tambahData", "/anggota/update/**","/anggota/findById", "/anggota/delete/**").hasAuthority("ADMIN")
-                .antMatchers("/buku/tambahData", "/buku/update/**","/buku/findById", "/buku/delete/**").hasAuthority("ADMIN")
-                .antMatchers("/pengambilan/tambahData", "/pengambilan/update/**","/pengambilan/findById", "/pengambilan/delete/**").hasAuthority("ADMIN")
-                .antMatchers("/peminjaman/tambahData", "/peminjaman/update/**","/peminjaman/findById", "/peminjaman/delete/**").hasAuthority("ADMIN")
-                .antMatchers("/anggota/report/pdf/LaporanAnggota" , "/anggota/report/excel/LaporanAnggota").hasAuthority("ADMIN")
-                .antMatchers("/buku/report/pdf/LaporanBuku" , "/buku/report/excel/LaporanBuku").hasAuthority("ADMIN")
-                .antMatchers("/pengambilan/report/pdf/LaporanPengambilan" , "/pengambilan/report/excel/LaporanPengambilan").hasAuthority("ADMIN")
-                .antMatchers("/peminjaman/report/pdf/LaporanPeminjaman" , "/peminjaman/report/excel/LaporanPeminjaman").hasAuthority("ADMIN")
-                .and()
+       http.authorizeRequests(authorize -> authorize
+                        .anyRequest().authenticated()
+                )
                 .logout().permitAll()
                 .and().formLogin()
-                .defaultSuccessUrl("/dashboard", true);
+                .defaultSuccessUrl("/switch/anggota/list", true);
     }
+
 
     @Override
     public void configure(WebSecurity web) throws Exception {
