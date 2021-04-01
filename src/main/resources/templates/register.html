@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Register</title>
+    <title>SISPUR - Register</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,6 +19,8 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="icon" href="img/favicon.png">
+
 
 </head>
 
@@ -36,29 +38,31 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user">
+                            <form class="user" method="post" role="form" th:action="@{/auth/signup}" th:object="${user}">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
+                                        <label for="inputFirstname" class="sr-only">FirstName : </label>
+                                        <input type="text" id="inputFirstname" th:field="*{firstname}" class="form-control form-control-user" placeholder="Masukan Nama Belakang" autofocus>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                        <label for="inputLastname" class="sr-only">Lastname : </label>
+                                        <input type="text" class="form-control form-control-user" th:field="*{lastname}"  id="inputLastname"
+                                            placeholder="Masukan nama Belakang" autofocus>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
+                                        <label for="inputUsername" class="sr-only">Username : </label>
+                                        <input type="text" th:field="*{username}" class="form-control form-control-user" id="inputUsername"
+                                               placeholder="Masukan Username">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="inputEmail" class="sr-only">Email : </label>
+                                        <input type="text"  th:field="*{email}" class="form-control form-control-user" id="inputEmail"
+                                               placeholder="Masukan Email">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="inputPassword" class="sr-only">Password : </label>
+                                        <input type="password" th:field="*{password}" class="form-control form-control-user" id="inputPassword"
+                                               placeholder="Masukan Password">
                                     </div>
                                 </div>
                                 <a href="login.html" class="btn btn-primary btn-user btn-block">

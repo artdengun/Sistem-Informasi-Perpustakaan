@@ -16,8 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.util.Optional;
 
-@Controller()
-@RequestMapping("auth")
+@Controller
 public class UserController {
 
     private UserService userService;
@@ -32,21 +31,21 @@ public class UserController {
     @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
     public ModelAndView signIn() {
         ModelAndView model = new ModelAndView();
-        model.setViewName("auth/login");
+        model.setViewName("login");
         return model;
     }
 
-    @RequestMapping(value = {"/signup"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/register"}, method = RequestMethod.GET)
     public ModelAndView signUp() {
         ModelAndView model = new ModelAndView();
         User user = new User();
         model.addObject("user", user);
-        model.setViewName("auth/register");
+        model.setViewName("register");
 
         return model;
     }
 
-    @RequestMapping(value = "/signup", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView createUser(@Valid User user, BindingResult bindingResult) {
         ModelAndView model = new ModelAndView();
         User userExist = userService.findByEmail(user.getEmail());
@@ -56,12 +55,13 @@ public class UserController {
         }
 
         if (bindingResult.hasErrors()) {
-            model.setViewName("auth/signup");
+            model.setViewName("register");
         } else {
             userService.save(user);
             model.addObject("msg", "User has been registered successfully!");
             model.addObject("user", new User());
-            model.setViewName("auth/signup");
+            model.setViewName("register");
+            model.setViewName("register");
         }
 
         return model;
