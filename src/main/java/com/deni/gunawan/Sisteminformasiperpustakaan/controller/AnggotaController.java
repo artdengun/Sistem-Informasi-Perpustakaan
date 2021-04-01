@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +46,7 @@ public class AnggotaController {
     }
 
     @PostMapping("anggota/tambahData")
+    @PreAuthorize("hasAuthority('VIEW_TRANSAKSI')")
     public String tambahAnggota(Anggota anggota){
         anggotaService.save(anggota);
         return "redirect:/anggota";
