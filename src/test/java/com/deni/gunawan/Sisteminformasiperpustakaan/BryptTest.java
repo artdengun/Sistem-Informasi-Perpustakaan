@@ -20,18 +20,23 @@ public class BryptTest {
         String passwordMahasiswa = "mahasiswa";
         String bcryptStaff = passwordEncoder.encode(passwordMahasiswa);
         Assert.assertNotNull(bcryptStaff);
-        System.out.println("mahasiswa : " + bcryptStaff);
+        System.out.println("mahasiswa = " + bcryptStaff);
 
         String passwordAdmin = "admin";
         String bcryptAdmin = passwordEncoder.encode(passwordAdmin);
         Assert.assertNotNull(passwordAdmin);
-        System.out.println("admin : "+bcryptAdmin);
+        System.out.println("admin = "+bcryptAdmin);
 
 
         String passwordDeveloper = "developer";
         String bcryptDeveloper = passwordEncoder.encode(passwordDeveloper);
         Assert.assertNotNull(passwordDeveloper);
-        System.out.println("developer : "+bcryptDeveloper);
+        System.out.println("developer =  "+bcryptDeveloper);
+
+        String passwordUser = "user";
+        String m  = passwordEncoder.encode(passwordUser);
+        Assert.assertNotNull(passwordUser);
+        System.out.println("user = " + m);
     }
 
 }

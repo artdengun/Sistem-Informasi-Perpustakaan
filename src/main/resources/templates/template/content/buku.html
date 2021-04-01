@@ -60,22 +60,25 @@
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Data Buku</h1>
-                <p class="mb-4">Silahkan Untuk mengisi Data Buku Terbaru, <b>PASTIKAN</b> menginput data sesuai dengan
+                <p  sec:authorize="hasAuthority('ADMIN')" class="mb-4">Silahkan Untuk mengisi Data Buku Terbaru, <b>PASTIKAN</b> menginput data sesuai dengan
                     data <b>Mahasiswa</b> Terimakasih. <a target="_blank"></p>
+
+                <p class="mb-4"  sec:authorize="hasAuthority('LIHAT_DATA')">Kamu sudah siap membaca? Ini adalah halaman Buku kami, silahkan dilihat.  </p>
+
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Data Buku Perpustakaan</h6> <br />
-                        <a type="button" class="btn btn-outline-danger btn-sm fa-pull-right shadow-sm rounded"
+                        <a  sec:authorize="hasAuthority('ADMIN')" type="button" class="btn btn-outline-danger btn-sm fa-pull-right shadow-sm rounded"
                             th:href="@{/buku/report/pdf/LaporanBuku}">Export
                             PDF</a>
-                        <a type="button" class="btn btn-outline-success btn-sm fa-pull-right shadow-sm rounded mr-2"
+                        <a   sec:authorize="hasAuthority('ADMIN')" type="button" class="btn btn-outline-success btn-sm fa-pull-right shadow-sm rounded mr-2"
                             th:href="@{/buku/report/excel/LaporanBuku}">Export
                             Excel</a>
                     </div>
                     <button type=" button" class="btn btn-primary btn-sm  ml-2 mr-2 shadow-lg rounded "
-                        data-toggle="modal" data-target="#addModal">Tambah Buku </button>
+                        data-toggle="modal" data-target="#addModal"  sec:authorize="hasAuthority('ADMIN')">Tambah Buku </button>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
@@ -85,7 +88,7 @@
                                         <th>Pengarang</th>
                                         <th>Penerbit</th>
                                         <th>Jumlah</th>
-                                        <th>Action</th>
+                                        <th  sec:authorize="hasAuthority('ADMIN')">Action</th>
 
                                     </tr>
                                 </thead>
@@ -95,7 +98,7 @@
                                         <th>Pengarang</th>
                                         <th>Penerbit</th>
                                         <th>Jumlah</th>
-                                        <th>Action</th>
+                                        <th  sec:authorize="hasAuthority('ADMIN')">Action</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
@@ -104,7 +107,7 @@
                                         <td th:text="${buku.pengarang}"></td>
                                         <td th:text="${buku.penerbit}"></td>
                                         <td th:text="${buku.jumlah}"></td>
-                                        <td>
+                                        <td  sec:authorize="hasAuthority('ADMIN')">
                                             <div class="btn-group">
                                                 <a class="btn btn-primary btn-sm" id="editButton"
                                                     th:href="@{/buku/findById/(id=${buku.id_buku})}"><i

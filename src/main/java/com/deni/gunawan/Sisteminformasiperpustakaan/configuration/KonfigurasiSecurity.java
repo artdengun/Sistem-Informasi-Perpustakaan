@@ -36,15 +36,7 @@ public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
                     "where u.username = ?";
 
 
-    @Bean
-    public SwitchUserFilter switchUserFilter() throws Exception {
-        SwitchUserFilter filter = new SwitchUserFilter();
-        filter.setUserDetailsService(userDetailsService());
-        filter.setSwitchUserUrl("/switchuser/form");
-        filter.setExitUserUrl("/switchuser/exit");
-        filter.setTargetUrl("/transaksi/list");
-        return filter;
-    }
+
 
     @Autowired
     private DataSource dataSource;
@@ -65,14 +57,20 @@ public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests(authorize -> authorize
-                .mvcMatchers("/switchuser/exit")
-                .hasAuthority(SwitchUserFilter.ROLE_PREVIOUS_ADMINISTRATOR)
-                .mvcMatchers("/switchuser/select", "/switchuser/form")
-                .hasAuthority("Administrator")
-                .anyRequest().authenticated()
-        )
-                .addFilterAfter(switchUserFilter(), FilterSecurityInterceptor.class)
+        http.authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/logout").permitAll()
+                .antMatchers("/anggota", "/buku", "/pengambilan", "peminjaman").permitAll()
+                .antMatchers("/anggota/tambahData", "/anggota/update/**","/anggota/findById", "/anggota/delete/**").hasAuthority("ADMIN")
+                .antMatchers("/buku/tambahData", "/buku/update/**","/buku/findById", "/buku/delete/**").hasAuthority("ADMIN")
+                .antMatchers("/pengambilan/tambahData", "/pengambilan/update/**","/pengambilan/findById", "/pengambilan/delete/**").hasAuthority("ADMIN")
+                .antMatchers("/peminjaman/tambahData", "/peminjaman/update/**","/peminjaman/findById", "/peminjaman/delete/**").hasAuthority("ADMIN")
+                .antMatchers("/anggota/report/pdf/LaporanAnggota" , "/anggota/report/excel/LaporanAnggota").hasAuthority("ADMIN")
+                .antMatchers("/buku/report/pdf/LaporanBuku" , "/buku/report/excel/LaporanBuku").hasAuthority("ADMIN")
+                .antMatchers("/pengambilan/report/pdf/LaporanPengambilan" , "/pengambilan/report/excel/LaporanPengambilan").hasAuthority("ADMIN")
+                .antMatchers("/peminjaman/report/pdf/LaporanPeminjaman" , "/peminjaman/report/excel/LaporanPeminjaman").hasAuthority("ADMIN")
+                .and()
                 .logout().permitAll()
                 .and().formLogin()
                 .defaultSuccessUrl("/dashboard", true);
@@ -81,11 +79,11 @@ public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-                .antMatchers("/resources/*")
-                .antMatchers("/css/*")
-                .antMatchers("/img/*")
-                .antMatchers("/js/*")
-                .antMatchers("/scss/*")
-                .antMatchers("/vendor/*");
+                .antMatchers("/resources/**")
+                .antMatchers("/css/**")
+                .antMatchers("/img/**")
+                .antMatchers("/js/**")
+                .antMatchers("/scss/**")
+               .antMatchers("/vendor/**");
     }
 }

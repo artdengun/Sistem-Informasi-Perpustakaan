@@ -1,8 +1,8 @@
 package com.deni.gunawan.Sisteminformasiperpustakaan.controller;
 
-import com.deni.gunawan.Sisteminformasiperpustakaan.configuration.BukuExcelExporter;
-import com.deni.gunawan.Sisteminformasiperpustakaan.model.Buku;
-import com.deni.gunawan.Sisteminformasiperpustakaan.service.BukuService;
+import com.deni.gunawan.Sisteminformasiperpustakaan.configuration.AnggotaExcelExporter;
+import com.deni.gunawan.Sisteminformasiperpustakaan.model.Anggota;
+import com.deni.gunawan.Sisteminformasiperpustakaan.service.AnggotaService;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,59 +23,59 @@ import java.util.*;
 
 
 @Controller
-public class BukuController {
+public class AnggotaController {
 
     @Autowired
     ApplicationContext context;
 
 
-    @Autowired  private BukuService bukuService;
+    @Autowired  private AnggotaService anggotaService;
 
-    @GetMapping("buku")
-    public String getBuku(Model model){
-        List<Buku> bukuList = bukuService.getBukuList();
-        model.addAttribute("bukus", bukuList);
+    @GetMapping("anggota")
+    public String getAnggota(Model model){
+        List<Anggota> anggotaList = anggotaService.getAnggotaList();
+        model.addAttribute("anggotas", anggotaList);
 
-        return "Buku";
+        return "Anggota";
     }
-    @PostMapping("buku/tambahData")
-    public String tambahData(Buku Buku){
-        bukuService.save(Buku);
-        return "redirect:/buku";
+    @PostMapping("anggota/tambahData")
+    public String tambahData(Anggota anggota){
+        anggotaService.save(anggota);
+        return "redirect:/anggota";
     }
 
-    @RequestMapping("buku/findById")
+    @RequestMapping("anggota/findById")
     @ResponseBody
-    public Optional<Buku> findById(String id){
-        return bukuService.findById(id);
+    public Optional<Anggota> findById(String id){
+        return anggotaService.findById(id);
     }
 
-    @RequestMapping(value = "buku/update", method = {RequestMethod.PUT, RequestMethod.GET})
-    public String update(Buku Buku){
-        bukuService.save(Buku);
-        return "redirect:/buku";
+    @RequestMapping(value = "anggota/update", method = {RequestMethod.PUT, RequestMethod.GET})
+    public String update(Anggota anggota){
+        anggotaService.save(anggota);
+        return "redirect:/anggota";
     }
 
-    @RequestMapping(value = "buku/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
+    @RequestMapping(value = "anggota/delete", method = {RequestMethod.DELETE, RequestMethod.GET})
     public String delete(String id){
-        bukuService.delete(id);
-        return "redirect:/buku";
+        anggotaService.delete(id);
+        return "redirect:/anggota";
     }
 
-    @GetMapping(path = "buku/report/pdf/LaporanBuku")
+    @GetMapping(path = "anggota/report/pdf/LaporanAnggota")
     @ResponseBody
     public void getPdf(HttpServletResponse response) throws Exception {
-        Resource resource = context.getResource("classpath:reports/buku.jrxml");
+        Resource resource = context.getResource("classpath:reports/anggota.jrxml");
 
         InputStream inputStream = resource.getInputStream();
         JasperReport report = JasperCompileManager.compileReport(inputStream);
         //Parameters Set
         Map<String, Object> params = new HashMap<>();
 
-        List<Buku> bukus = (List<Buku>) bukuService.getBukuList();
+        List<Anggota> anggotas = (List<Anggota>) anggotaService.getAnggotaList();
 
         //Data source Set
-        JRDataSource dataSource = new JRBeanCollectionDataSource(bukus);
+        JRDataSource dataSource = new JRBeanCollectionDataSource(anggotas);
         params.put("datasource", dataSource);
 
         //Make jasperPrint
@@ -87,21 +87,21 @@ public class BukuController {
     }
 
 
-    @GetMapping("buku/report/excel/LaporanBuku")
+    @GetMapping("anggota/report/excel/Laporananggota")
     public void exportToExcel(HttpServletResponse response) throws IOException {
         response.setContentType("application/octet-stream");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
         String currentDateTime = dateFormatter.format(new Date());
 
         String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=laporanBuku" + currentDateTime + ".xlsx";
+        String headerValue = "attachment; filename=laporananggota" + currentDateTime + ".xlsx";
         response.setHeader(headerKey, headerValue);
 
-        List<Buku> listBuku = bukuService.getBukuList();
+        List<Anggota> listanggota = anggotaService.getAnggotaList();
 
-        BukuExcelExporter bukuExcelExporter = new BukuExcelExporter(listBuku);
+        AnggotaExcelExporter anggotaExcelExporter = new AnggotaExcelExporter(listanggota);
 
-        bukuExcelExporter.export(response);
+        anggotaExcelExporter.export(response);
 
         }
     }

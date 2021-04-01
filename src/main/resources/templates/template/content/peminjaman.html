@@ -70,14 +70,14 @@
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Data Buku Peminjaman</h6>
                         <a type="button" class="btn btn-outline-danger btn-sm fa-pull-right shadow-sm rounded"
-                           th:href="@{/peminjaman/report/pdf/LaporanAnggota}">Export
+                           th:href="@{/peminjaman/report/pdf/LaporanAnggota}"  sec:authorize="hasAuthority('ADMIN')">Export
                             PDF</a>
                         <a type="button" class="btn btn-outline-success btn-sm fa-pull-right shadow-sm rounded mr-2"
-                           th:href="@{/peminjaman/report/excel/LaporanAnggota}">Export
+                           th:href="@{/peminjaman/report/excel/LaporanAnggota}"  sec:authorize="hasAuthority('ADMIN')">Export
                             Excel</a>
                     </div>
                     <button type=" button" class="btn btn-primary btn-sm  ml-2 mr-2 shadow-lg rounded "
-                            data-toggle="modal" data-target="#addModal">Tambah Peminjaman </button>
+                            data-toggle="modal" data-target="#addModal"  sec:authorize="hasAuthority('ADMIN')">Tambah Peminjaman </button>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
@@ -87,7 +87,7 @@
                                         <th>Judul Buku</th>
                                         <th>Tanggal Pinjam</th>
                                         <th>Tanggal Kembali</th>
-                                        <th>Action</th>
+                                        <th  sec:authorize="hasAuthority('ADMIN')">Action</th>
 
                                     </tr>
                                 </thead>
@@ -97,7 +97,7 @@
                                         <th>Judul Buku</th>
                                         <th>Tanggal Pinjam</th>
                                         <th>Tanggal Kembali</th>
-                                        <th>Action</th>
+                                        <th  sec:authorize="hasAuthority('ADMIN')">Action</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
@@ -106,7 +106,7 @@
                                         <td th:text="${peminjaman.buku.judul}"></td>
                                         <td th:text="${peminjaman.tanggal_pinjam}"></td>
                                         <td th:text="${peminjaman.tanggal_kembali}"></td>
-                                        <td>
+                                        <td  sec:authorize="hasAuthority('ADMIN')">
                                             <div class="btn-group">
                                                 <a class="btn btn-primary btn-sm" id="editButton"
                                                     th:href="@{/peminjaman/findById/(id=${peminjaman.id_pinjaman})}">
