@@ -1,6 +1,7 @@
 package com.deni.gunawan.Sisteminformasiperpustakaan.configuration;
 
 
+import com.deni.gunawan.Sisteminformasiperpustakaan.Exception.CustomAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
@@ -66,18 +68,26 @@ public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests(authorize -> authorize
+        http.authorizeRequests()
                 .mvcMatchers("/switchuser/exit")
                 .hasAuthority(SwitchUserFilter.ROLE_PREVIOUS_ADMINISTRATOR)
                 .mvcMatchers("/switchuser/select", "/switchuser/form")
                 .hasAuthority("ADMIN")
+                .antMatchers("/anggota").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
-        )
+                .and()
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
+                .and()
                 .logout().permitAll()
                 .and().formLogin()
-                .defaultSuccessUrl("/switch/anggota/list", true);
+
+                .defaultSuccessUrl("/dashboard", true);
     }
 
+    @Bean
+    public AccessDeniedHandler accessDeniedHandler() {
+        return new CustomAccessDeniedHandler();
+    }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
