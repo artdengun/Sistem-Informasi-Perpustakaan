@@ -64,6 +64,9 @@ public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/signup").permitAll()
+                .antMatchers("/signin").permitAll()
                 .mvcMatchers("/switchuser/exit")
                 .hasAuthority(SwitchUserFilter.ROLE_PREVIOUS_ADMINISTRATOR)
                 .mvcMatchers("/switchuser/select", "/switchuser/form")
