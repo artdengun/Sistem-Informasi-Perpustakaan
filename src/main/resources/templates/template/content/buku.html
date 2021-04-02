@@ -78,7 +78,7 @@
                             Excel</a>
                     </div>
                     <button type=" button" class="btn btn-primary btn-sm  ml-2 mr-2 shadow-lg rounded "
-                        data-toggle="modal" data-target="#addModal"  sec:authorize="hasAuthority('ADMIN')">Tambah Buku </button>
+                        data-toggle="modal" data-target="#addModal" >Tambah Buku </button>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
@@ -107,7 +107,7 @@
                                         <td th:text="${buku.pengarang}"></td>
                                         <td th:text="${buku.penerbit}"></td>
                                         <td th:text="${buku.jumlah}"></td>
-                                        <td  sec:authorize="hasAuthority('ADMIN')">
+                                        <td>
                                             <div class="btn-group">
                                                 <a class="btn btn-primary btn-sm" id="editButton"
                                                     th:href="@{/buku/findById/(id=${buku.id_buku})}"><i

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class SwitchUserController {
     @Autowired
-    private UserRepository penggunaDao;
+    private UserRepository userRepository;
     @Autowired
     private AuditLogRepository auditLogDao;
 
@@ -24,7 +24,7 @@ public class SwitchUserController {
     @GetMapping("/switchuser/select")
     public ModelMap pilihUser() {
         return new ModelMap()
-                .addAttribute("daftarPengguna",
-                        penggunaDao.findAll());
+                .addAttribute("daftarUser",
+                        userRepository.findAll());
     }
 }

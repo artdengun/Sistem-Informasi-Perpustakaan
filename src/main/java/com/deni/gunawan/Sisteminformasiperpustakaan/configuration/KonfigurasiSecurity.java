@@ -56,7 +56,7 @@ public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
         filter.setUserDetailsService(userDetailsService());
         filter.setSwitchUserUrl("/switchuser/form");
         filter.setExitUserUrl("/switchuser/exit");
-        filter.setTargetUrl("/transaksi/list");
+        filter.setTargetUrl("/switch/anggota/list");
         return filter;
     }
     @Bean
@@ -66,9 +66,13 @@ public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-       http.authorizeRequests(authorize -> authorize
-                        .anyRequest().authenticated()
-                )
+        http.authorizeRequests(authorize -> authorize
+                .mvcMatchers("/switchuser/exit")
+                .hasAuthority(SwitchUserFilter.ROLE_PREVIOUS_ADMINISTRATOR)
+                .mvcMatchers("/switchuser/select", "/switchuser/form")
+                .hasAuthority("ADMIN")
+                .anyRequest().authenticated()
+        )
                 .logout().permitAll()
                 .and().formLogin()
                 .defaultSuccessUrl("/switch/anggota/list", true);

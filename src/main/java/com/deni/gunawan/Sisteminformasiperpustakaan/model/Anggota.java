@@ -58,5 +58,6 @@ public class Anggota {
     @OneToMany(mappedBy = "anggota", fetch = FetchType.EAGER)
     private List<Pengembalian> pengembalianList;
 
-
+    @ManyToOne @JoinColumn(name = "id_users")
+    private User user;
 }

@@ -11,12 +11,12 @@
 
     <form method="post" th:action="@{/switchuser/form}" >
         <div class="form-group row">
-            <label for="pengguna" class="col-sm-2 col-form-label">Pengguna</label>
+            <label for="user" class="col-sm-2 col-form-label">User</label>
             <div class="col-sm-10">
-                <select class="form-control" id="pengguna" name="username">
+                <select class="form-control" id="user" name="username">
                     <option>Pilih Pengguna</option>
-                    <option th:each="p : ${daftarPengguna}"
-                            th:text="${p.nama}"
+                    <option th:each="p : ${daftarUser}"
+                            th:text="${p.username}"
                     th:value="${p.username}">2</option>
                 </select>
             </div>

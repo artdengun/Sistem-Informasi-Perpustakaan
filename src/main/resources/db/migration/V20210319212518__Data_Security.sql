@@ -11,6 +11,12 @@ insert into s_users (id, username, active, id_role)
 values ('u001', 'mahasiswa', true, 'm001');
 
 insert into s_users (id, username, active, id_role)
+values ('u002', 'mahasiswa1', true, 'm001');
+
+insert into s_users (id, username, active, id_role)
+values ('u003', 'mahasisw2', true, 'm001');
+
+insert into s_users (id, username, active, id_role)
 values ('a001', 'admin', true, 'a001');
 
 insert into s_users (id, username, active, id_role)
@@ -19,6 +25,14 @@ values ('d001', 'developer', true, 'd001');
 -- password : mahasiswa
 insert into s_users_passwords (id_user, password)
 values ('u001', '$2a$10$QlX3csFnic/cJylMMTuoi.VJP2iS4UG/gqsXMF8wso50Yfd/g.D.W');
+
+-- password : mahasiswa
+insert into s_users_passwords (id_user, password)
+values ('u002', '$2a$10$QlX3csFnic/cJylMMTuoi.VJP2iS4UG/gqsXMF8wso50Yfd/g.D.W');
+
+-- password : mahasiswa
+insert into s_users_passwords (id_user, password)
+values ('u003', '$2a$10$QlX3csFnic/cJylMMTuoi.VJP2iS4UG/gqsXMF8wso50Yfd/g.D.W');
 
 -- password : admin
 insert into s_users_passwords (id_user, password)

@@ -35,10 +35,10 @@
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" th:href="@{/transaksi/list}">Daftar Transaksi</a>
         &nbsp; | &nbsp;
-        <a sec:authorize="hasAuthority('Administrator')"
+        <a sec:authorize="hasAuthority('ADMIN')"
            class="p-2 text-dark" th:href="@{/switchuser/select}">Ganti User</a>
         &nbsp; | &nbsp;
-        <a sec:authorize="hasAuthority('Administrator')"
+        <a sec:authorize="hasAuthority('ADMIN')"
            class="p-2 text-dark" th:href="@{/switchuser/auditlog}">Audit Log</a>
         &nbsp; | &nbsp;
         <a sec:authorize="hasRole('ROLE_PREVIOUS_ADMINISTRATOR')"
