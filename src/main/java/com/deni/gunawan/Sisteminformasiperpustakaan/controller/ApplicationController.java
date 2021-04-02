@@ -10,4 +10,19 @@ public class ApplicationController {
     public String getDashboard(){
             return "dashboard";
     }
+
+    @GetMapping("signin")
+    public String getSignIn(){
+        return "signin";
+    }
+
+    @GetMapping("signup")
+    public String getSignUp(){
+        return "signup";
+    }
+
+    @GetMapping("/")
+    public String getIndex(){
+        return "index";
+    }
 }

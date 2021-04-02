@@ -53,25 +53,17 @@
       <div class="row align-items-center">
 
         <div class="col-6 col-lg-2">
-          <h1 class="mb-0 site-logo"><a href="index.html" class="mb-0">SISPUR</a></h1>
+          <h1 class="mb-0 site-logo"><a th:href="@{/}" class="mb-0">SISPUR</a></h1>
         </div>
 
         <div class="col-12 col-md-10 d-none d-lg-block">
           <nav class="site-navigation position-relative text-right" role="navigation">
 
             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-              <li class="active"><a href="index.html" class="nav-link">Home</a></li>
-              <li><a href="features.html" class="nav-link">Features</a></li>
-              <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+              <li class="active"><a th:href="@{/}" class="nav-link">Home</a></li>
+              <li><a th:href="@{signin}" class="nav-link">Login</a></li>
+              <li><a th:href="@{signup}"class="nav-link">Daftar</a></li>
 
-              <li class="has-children">
-                <a href="blog.html" class="nav-link">Blog</a>
-                <ul class="dropdown">
-                  <li><a href="blog.html" class="nav-link">Blog</a></li>
-                  <li><a href="blog-single.html" class="nav-link">Blog Sigle</a></li>
-                </ul>
-              </li>
-              <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
           </nav>
         </div>
@@ -131,7 +123,7 @@
 
         <div class="row justify-content-center text-center mb-5">
           <div class="col-md-5" data-aos="fade-up">
-            <h2 class="section-heading">Save your time to using SoftLand</h2>
+            <h2 class="section-heading">Apasih manfaat dari membaca? </h2>
           </div>
         </div>
 
@@ -141,8 +133,8 @@
               <div class="wrap-icon icon-1">
                 <span class="icon la la-users"></span>
               </div>
-              <h3 class="mb-3">Explore Your Team</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, optio.</p>
+              <h3 class="mb-3">Memiliki Pengetahuan</h3>
+              <p>Dengan Membaca kita dapat memiliki pengetahuan, asiknya, kita dapat berbagi pengetahuan kita!</p>
             </div>
           </div>
           <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
@@ -150,8 +142,8 @@
               <div class="wrap-icon icon-1">
                 <span class="icon la la-toggle-off"></span>
               </div>
-              <h3 class="mb-3">Digital Whiteboard</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, optio.</p>
+              <h3 class="mb-3">Memiliki Kepercayaan Diri</h3>
+              <p>Dengan Membaca kita dapat meningkatkan kepercayaan diri loh? ayo coba!</p>
             </div>
           </div>
           <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
@@ -159,8 +151,8 @@
               <div class="wrap-icon icon-1">
                 <span class="icon la la-umbrella"></span>
               </div>
-              <h3 class="mb-3">Design To Development</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, optio.</p>
+              <h3 class="mb-3">Mempunyai Cara Berpikir Luas</h3>
+              <p>Dengan Membaca kita dapat berpikir secara luas loh, gak yakin? coba deh gengs!</p>
             </div>
           </div>
         </div>
@@ -267,7 +259,7 @@
                 <p class="review-user">
                   <img src="img/person_1.jpg" alt="Image" class="img-fluid rounded-circle mb-3">
                   <span class="d-block">
-                    <span class="text-black">Jean Doe</span>, &mdash; App User
+                    <span class="text-black">Arif Dermawan</span>, &mdash; Mahasiswa
                   </span>
                 </p>
 
@@ -291,7 +283,7 @@
                 <p class="review-user">
                   <img src="img/person_2.jpg" alt="Image" class="img-fluid rounded-circle mb-3">
                   <span class="d-block">
-                    <span class="text-black">Johan Smith</span>, &mdash; App User
+                    <span class="text-black">Ahmad Zaelani</span>, &mdash; Mahasiswa
                   </span>
                 </p>
 
@@ -315,7 +307,7 @@
                 <p class="review-user">
                   <img src="img/person_3.jpg" alt="Image" class="img-fluid rounded-circle mb-3">
                   <span class="d-block">
-                    <span class="text-black">Jean Thunberg</span>, &mdash; App User
+                    <span class="text-black">Arum Nurbaeti</span>, &mdash; Mahasiswa
                   </span>
                 </p>
 

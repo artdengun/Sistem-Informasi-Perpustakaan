@@ -33,9 +33,9 @@ public class CostumErrorController  implements ErrorController {
                 // handle HTTP 500 Internal Server error
                 errorPage = "error/500";
 
-            } else if (statusCode == HttpStatus.BAD_GATEWAY.value()) {
+            } else if (statusCode == HttpStatus.METHOD_NOT_ALLOWED.value()) {
             // handle HTTP 403 Forbidden error
-            errorPage = "error/403";
+            errorPage = "error/405";
 
         }
 
