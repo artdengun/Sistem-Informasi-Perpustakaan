@@ -11,7 +11,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.authentication.switchuser.SwitchUserFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
 
@@ -63,10 +66,12 @@ public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.httpBasic().disable();
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/signup").permitAll()
                 .antMatchers("/signin").permitAll()
+
                 .mvcMatchers("/switchuser/exit")
                 .hasAuthority(SwitchUserFilter.ROLE_PREVIOUS_ADMINISTRATOR)
                 .mvcMatchers("/switchuser/select", "/switchuser/form")
@@ -74,10 +79,28 @@ public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/anggota").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
+                .formLogin()
+                .loginPage("/signin").failureUrl("/signin?error=true")
+                .loginProcessingUrl("/authentication")
+                .defaultSuccessUrl("/dashboard")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .and()
                 .logout().permitAll()
-                .and().formLogin()
+                .logoutSuccessUrl("/").permitAll()
+                .and()
+                .rememberMe()
+                .tokenRepository(persistentTokenRepository())
+                .tokenValiditySeconds(60 * 60)
+                .and()
+                .exceptionHandling().accessDeniedPage("/auth/access_denied");
+    }
 
-                .defaultSuccessUrl("/dashboard", true);
+    @Bean
+    public PersistentTokenRepository persistentTokenRepository() {
+        JdbcTokenRepositoryImpl db = new JdbcTokenRepositoryImpl();
+        db.setDataSource(dataSource);
+        return db;
     }
 
 

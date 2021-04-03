@@ -1,44 +1,82 @@
 <!DOCTYPE html>
 <html lang="id" xmlns:th="http://www.thymeleaf.org">
-<body>
+<head>
 
-<footer class="p-5 border-top" th:fragment="footer">
-    <div class="row" th:fragment="footer-content">
-        <div class="col-md-3 border-right" style="text-align: center;">
-            <img alt="" class="mb-2" height="72" th:src="@{/img/brand.png}" width="72">
-            <br>
-            <strong>SIKDP</strong>
-            <p>Sistem Informasi Kelompok Dinas Pertanian</p>
-            <small class="d-block mb-3 text-muted">Copyright &copy; 2018
-                SIKDP. All rights reversed.
-            </small>
+</head>
+<body>
+ <!-- ======= Footer ======= -->
+    <footer class="footer" role="contentinfo"  th:fragment="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h3>Tentang Sispur</h3>
+                    <p>Sistem Informasi Perpustakaan ini dibangun dengan menggunakan java dan springboot , dengan penggunaan teknologi ini
+                        kita dapat membuat sebuah website </p>
+                    <p class="social">
+                        <a href="#"><span class="icofont-twitter"></span></a>
+                        <a href="#"><span class="icofont-facebook"></span></a>
+                        <a href="#"><span class="icofont-dribbble"></span></a>
+                        <a href="#"><span class="icofont-behance"></span></a>
+                    </p>
+                </div>
+                <div class="col-md-7 ml-auto">
+                    <div class="row site-section pt-0">
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <h3>Artikel</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Sosial</a></li>
+                                <li><a href="#">Teknologi</a></li>
+                                <li><a href="#">Aplikasi</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <h3>Contact Developer</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Whatsapp</a></li>
+                                <li><a href="#">Telegram</a></li>
+                                <li><a href="#">Gmail</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-4 mb-4 mb-md-0">
+                            <h3>Daftar Aplikasi</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="#">System Management</a></li>
+                                <li><a href="#">System Selling </a></li>
+                                <li><a href="#">System Ecommerce </a></li>
+                                <li><a href="#">System Inventory </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center text-center">
+                <div class="col-md-7">
+                    <p class="copyright">
+                        &copy; 2020 <script type="text/javascript">new Date().getFullYear()>2020&&document.write("-"+new Date().getFullYear());</script>, Sistem Informasi Perpustakaan
+                    </p>
+                    <div class="credits">
+                        Developer By <a href="https://github.com/artdengun">Deni Gunawan</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="pl-2 col-md-3">
-            <h5 class="pl-2 ">Pintasan</h5>
-            <ul class="pl-2 list-unstyled text-small">
-                <li><a class="text-muted" href="#">Dashboard</a></li>
-                <li><a class="text-muted" href="#">Kelompok Tani</a></li>
-                <li><a class="text-muted" href="#">Komoditi</a></li>
-                <li><a class="text-muted" href="#">Bantuan</a></li>
-            </ul>
-        </div>
-        <div class="pl-2 col-md-3">
-            <h5 class="pl-2 ">Laporan</h5>
-            <ul class="pl-2 list-unstyled text-small">
-                <li><a class="text-muted" href="#">Laporan Kelompok Tani</a></li>
-            </ul>
-        </div>
-        <div class="col-md-3">
-            <h5 class="pl-2">Terkait</h5>
-            <ul class="pl-2 list-unstyled text-small">
-                <li><a class="text-muted" href="#">Kabupaten P.Siantar</a></li>
-                <li><a class="text-muted" href="#">Locations</a></li>
-                <li><a class="text-muted" href="#">Privacy</a></li>
-                <li><a class="text-muted" href="#">Terms</a></li>
-            </ul>
-        </div>
-    </div>
-</footer>
+    </footer>
+
+ <!-- Vendor JS Files -->
+ <script src="vendor/jquery/jquery.min.js"></script>
+ <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ <script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+ <script src="vendor/php-email-form/validate.js"></script>
+ <script src="vendor/aos/aos.js"></script>
+ <script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+ <script src="vendor/jquery-sticky/jquery.sticky.js"></script>
+
+ <!-- Template Main JS File -->
+ <script src="js/main-landing.js"></script>
 
 </body>
 

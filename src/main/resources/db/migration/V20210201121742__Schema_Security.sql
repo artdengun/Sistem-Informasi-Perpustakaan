@@ -37,14 +37,3 @@ create table s_roles_permissions (
   foreign key (id_role) references s_roles(id),
   foreign key (id_permission) references s_permissions(id)
 );
-
-create table audit_log (
-    id                  varchar(36),
-    id_pengguna_asli    varchar(36)  not null,
-    id_pengguna_dipakai varchar(36)  not null,
-    waktu_kegiatan      TIMESTAMP     not null,
-    keterangan          varchar(255) not null,
-    primary key (id),
-    foreign key (id_pengguna_asli) references s_users (id),
-    foreign key (id_pengguna_dipakai) references s_users (id)
-);
