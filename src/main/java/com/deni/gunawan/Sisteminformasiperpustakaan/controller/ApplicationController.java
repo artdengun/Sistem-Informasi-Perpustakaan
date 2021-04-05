@@ -4,6 +4,7 @@ import com.deni.gunawan.Sisteminformasiperpustakaan.model.User;
 import com.deni.gunawan.Sisteminformasiperpustakaan.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,9 @@ public class ApplicationController {
         return "signin";
     }
 
+
     @GetMapping("register")
+    @PreAuthorize("hasAuthority('USER')")
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new User());
 
@@ -37,6 +40,7 @@ public class ApplicationController {
     }
 
     @PostMapping("/process_register")
+    @PreAuthorize("hasAuthority('USER')")
     public String processRegister(User user, HttpServletRequest request)
             throws UnsupportedEncodingException, MessagingException {
         service.register(user, getSiteURL(request));
@@ -49,6 +53,7 @@ public class ApplicationController {
     }
 
     @GetMapping("/verify")
+    @PreAuthorize("hasAuthority('USER')")
     public String verifyUser(@Param("code") String code) {
         if (service.verify(code)) {
             return "verify_success";

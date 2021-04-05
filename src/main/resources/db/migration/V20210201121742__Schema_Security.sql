@@ -1,6 +1,6 @@
 create table roles (
   id  varchar(36),
-  nama varchar(100) not null,
+  nama varchar(100),
   primary key (id),
   unique (nama)
 );
@@ -14,7 +14,7 @@ create table users(
   password varchar(64) not null,
   verificationcode varchar(64),
   active boolean not null,
-  id_role varchar (36) not null,
+  id_role varchar (36),
   primary key (id),
   unique(email, username),
   foreign key (id_role) references roles(id)

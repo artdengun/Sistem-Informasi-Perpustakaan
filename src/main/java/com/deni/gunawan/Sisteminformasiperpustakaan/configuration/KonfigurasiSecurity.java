@@ -53,9 +53,9 @@ public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
         http.httpBasic().disable();
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/signup").hasAnyAuthority("USER")
-                .antMatchers("/confirm").permitAll()
                 .antMatchers("/signin").permitAll()
+                .antMatchers("/confirm/**", "/verify_fail/**", "/verify_success/**", "/register_success").permitAll()
+                .antMatchers("/signup").permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/signin").failureUrl("/signin?error=true")

@@ -2,14 +2,17 @@ package com.deni.gunawan.Sisteminformasiperpustakaan.configuration;
 
 import com.deni.gunawan.Sisteminformasiperpustakaan.model.Role;
 import com.deni.gunawan.Sisteminformasiperpustakaan.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.*;
 
+
 public class CustomUserDetails implements UserDetails {
 
+    @Autowired
     private User user;
 
     public CustomUserDetails(User user) {
