@@ -1,67 +1,37 @@
-insert into s_roles (id, name)
-values ('m001', 'mahasiswa');
+insert into s_roles (id, nama)
+values ('u001', 'user');
 
-insert into s_roles (id, name)
+insert into s_roles (id, nama)
+values ('s001', 'staff');
+
+insert into s_roles (id, nama)
 values ('a001', 'admin');
 
-insert into s_roles (id, name)
-values ('d001', 'developer');
+insert into s_user (id, firstname, lastname,  username, email, password, active,  id_role)
+values ('usr001', 'deni','gunawan','artdengun','user775@gmail.com','$2y$12$s0hZsPm63eQcrOTSaVbRuuseJcYgrIF1KLhvw3.ZVAt4grNdGI4Gi ', true, 'u001');
 
-insert into s_users (id, username, active, id_role)
-values ('u001', 'mahasiswa', true, 'm001');
+insert into s_user (id, firstname, lastname,  username, email, password, active,  id_role)
+values ('stf002', 'deni','gunawan','artdengun','staf775@gmail.com','$2y$12$/W2/7lRDQKA53cg9iHAeQO5/TfDNhIHNCBDtbgpenLOFQcXWZonwi ', true, 's001');
 
-insert into s_users (id, username, active, id_role)
-values ('u002', 'mahasiswa1', true, 'm001');
-
-insert into s_users (id, username, active, id_role)
-values ('u003', 'mahasisw2', true, 'm001');
-
-insert into s_users (id, username, active, id_role)
-values ('a001', 'admin', true, 'a001');
-
-insert into s_users (id, username, active, id_role)
-values ('d001', 'developer', true, 'd001');
-
--- password : mahasiswa
-insert into s_users_passwords (id_user, password)
-values ('u001', '$2a$10$QlX3csFnic/cJylMMTuoi.VJP2iS4UG/gqsXMF8wso50Yfd/g.D.W');
-
--- password : mahasiswa
-insert into s_users_passwords (id_user, password)
-values ('u002', '$2a$10$QlX3csFnic/cJylMMTuoi.VJP2iS4UG/gqsXMF8wso50Yfd/g.D.W');
-
--- password : mahasiswa
-insert into s_users_passwords (id_user, password)
-values ('u003', '$2a$10$QlX3csFnic/cJylMMTuoi.VJP2iS4UG/gqsXMF8wso50Yfd/g.D.W');
-
--- password : admin
-insert into s_users_passwords (id_user, password)
-values ('a001', '$2a$10$giNNBwdRDKsEHuMgf5jLKe3oLSnbnnaD8dYgGhi9CtS1aHFzBYOZ.');
-
--- password developer
-insert into s_users_passwords (id_user, password)
-values ('d001', '$2a$10$D2X8RJ3oGUtr/5LSbba2feWoem/EGHKbTEYEgpeSuEtYSHHlYQ7km');
+insert into s_user (id, firstname, lastname,  username, email, password, active,  id_role)
+values ('adm003', 'deni','gunawan','artdengun','admin775@gmail.com','$2y$12$z32qWkJRuuJ6mbUTOD8U7eA2hHYoiPGGqbd/Cy/eJs7V4Qu7j6FA6 ', true, 'a001');
 
 
 insert into s_permissions (id, label, value)
-values ('p001', 'Lihat Data Perpustakaan', 'LIHAT_DATA');
+values ('p001', 'Lihat Data Perpustakaan', 'USER');
 
 insert into s_permissions (id, label, value)
-values ('p002', 'Mengatur Data Perpustakaan', 'ADMIN');
+values ('p002', 'Mengatur Data', 'STAFF');
 
 insert into s_permissions (id, label, value)
-values ('p003', 'Mengelola Aplikasi Perpustakaan', 'DEVELOPER');
+values ('p003', 'Mengelola Aplikasi Perpustakaan', 'ADMIN');
 
 
 insert into s_roles_permissions (id_role, id_permission)
-values ('m001', 'p001');
+values ('u001', 'p001');
 
 insert into s_roles_permissions (id_role, id_permission)
-values ('a001', 'p002');
-
-
-insert into s_roles_permissions (id_role, id_permission)
-values ('d001', 'p002');
+values ('s001', 'p002');
 
 insert into s_roles_permissions (id_role, id_permission)
-values ('d001', 'p003');
+values ('a001', 'p003');

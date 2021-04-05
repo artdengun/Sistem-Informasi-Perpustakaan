@@ -1,26 +1,25 @@
 create table s_roles (
-  id   varchar(36),
-  name varchar(100) not null,
+  id  varchar(36),
+  nama varchar(100) not null,
   primary key (id),
-  unique (name)
+  unique (nama)
 );
 
-create table s_users (
+create table s_user(
   id varchar (36),
-  username varchar (100) not null,
+  firstname varchar(20) not null,
+  lastname varchar(20) not null,
+  username varchar(50) not null,
+  email varchar(64) not null,
+  password varchar(64) not null,
+  verificationcode varchar(64),
   active boolean not null,
   id_role varchar (36) not null,
   primary key (id),
-  unique (username),
+  unique(email, username),
   foreign key (id_role) references s_roles(id)
 );
 
-create table s_users_passwords (
-  id_user varchar (36),
-  password varchar (255) not null,
-  primary key (id_user),
-  foreign key (id_user) references s_users(id)
-);
 
 create table s_permissions (
   id    varchar(36),

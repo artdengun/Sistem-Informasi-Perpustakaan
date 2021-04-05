@@ -10,6 +10,12 @@
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <!-- Bootstrap core CSS -->
+    <link
+            href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous" />
 
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
@@ -21,32 +27,32 @@
             <div class="signup-content">
                 <div class="signup-form">
                     <h2 class="form-title">Pendaftaran</h2>
-                    <form method="POST" enctype="utf8" class="register-form" id="register-form" action="/">
+                    <form th:action="@{/process_register}" role="form" th:object="${user}"  method="post">
                         <div class="form-group">
-                            <label for="firstname"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input type="firstname" name="firstname" id="firstname" placeholder="Masukan nama pertama kamu"/>
+                            <label for="firstname" ><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="firstname" th:field="*{firstname}" id="firstname" placeholder="Input Your Firstname"/>
 
                         </div>
                         <div class="form-group">
-                            <label for="lastname" ><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input type="lastname" name="lastname" id="lastname" placeholder="Masukan nama akhir kamu"/>
-
+                            <label for="lastname"> <i class="zmdi zmdi-email"></i></label>
+                            <input type="text" name="lastname" th:field="*{lastname}" id="lastname" placeholder="Input Your Lastname"/>
                         </div>
                         <div class="form-group">
-                            <label for="email"> <i class="zmdi zmdi-email"></i></label>
-                            <input type="email" name="email" id="email" placeholder="Masukan Email Kamu"/>
+                          <label for="username"> <i class="zmdi zmdi-email"></i></label>
+                           <input type="text" name="username"  id="username" th:field="*{username}" placeholder="Input Yout Username  "/>
+                      </div>
+                        <div class="form-group">
+                            <label for="email" ><i class="zmdi zmdi-lock"></i></label>
+                            <input type="text" name="email" th:field="*{email}" id="email" placeholder="email"/>
                         </div>
                         <div class="form-group">
-                            <label for="pass" ><i class="zmdi zmdi-lock"></i></label>
-                            <input type="password"name="pass" id="pass" placeholder="Password"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="re-pass"  ><i class="zmdi zmdi-lock-outline"></i></label>
-                            <input type="password" name="re-pass" id="re-pass" placeholder="Repeat your password"/>
+                            <label for="password" ><i class="fa fa-password"></i></label>
+                            <input type="password" name="password" th:field="*{password}" id="password" placeholder="email" required minlength="6" maxlength="10"/>
                         </div>
                         <div class="form-group">
                             <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in
+                                <a href="#" class="term-service">Terms of service</a></label>
                         </div>
                         <div class="form-group form-button">
                             <input type="submit"  name="signup" id="signup" class="form-submit" value="Register"/>
@@ -61,5 +67,20 @@
         </div>
     </section>
 </div>
+
+<!-- jQuery-->
+<script
+        src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script
+        src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+<!-- Bootstrap Validator plugin -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+
+
 </body>
 </html>

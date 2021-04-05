@@ -1,30 +1,52 @@
 package com.deni.gunawan.Sisteminformasiperpustakaan.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.management.relation.Role;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import java.util.List;
+import javax.persistence.*;
+
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "s_users")
+@Table(name = "s_user")
 public class User {
 
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    public String id;
+    private String id;
+
+    @Column(name = "firstname", nullable = false, length = 20)
+    private String firstname;
+
+    @Column(name = "lastname", nullable = false, length = 20)
+    private String lastname;
+
+    @Column(name = "username" , nullable = false, unique = true, length = 50)
+    private String username;
+
+    @Column(nullable = false, unique = true, length = 45)
+    private String email;
+
+    @Column(nullable = false, length = 64)
+    private String password;
 
 
-    @NotEmpty @NotNull @Max(100)
-    public String username;
+    @Column(name = "verificationcode", length = 64)
+    private String verificationCode;
+
+    private boolean active;
+
+    public String getFullName() {
+        return this.firstname + " " + this.lastname;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
 
 }
