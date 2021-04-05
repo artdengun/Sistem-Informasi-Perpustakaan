@@ -1,10 +1,12 @@
 package com.deni.gunawan.Sisteminformasiperpustakaan.configuration;
 
+import com.deni.gunawan.Sisteminformasiperpustakaan.model.Role;
 import com.deni.gunawan.Sisteminformasiperpustakaan.model.User;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
+import java.util.*;
 
 public class CustomUserDetails implements UserDetails {
 
@@ -16,7 +18,13 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Set<Role> roles = user.getId_role();
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+        for (Role role : roles){
+            authorities.addAll(Collections.singleton(new SimpleGrantedAuthority(role.getNama())));
+        }
+        return authorities;
     }
 
     @Override

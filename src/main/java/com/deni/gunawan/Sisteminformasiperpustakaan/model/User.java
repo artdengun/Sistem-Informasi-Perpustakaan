@@ -6,13 +6,15 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "s_user")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -35,6 +37,13 @@ public class User {
     @Column(nullable = false, length = 64)
     private String password;
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "id_user"),
+            inverseJoinColumns = @JoinColumn(name = "id_role")
+    )
+     private Set<Role> id_role = new HashSet<>();
 
     @Column(name = "verificationcode", length = 64)
     private String verificationCode;

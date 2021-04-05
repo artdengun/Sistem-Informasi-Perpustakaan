@@ -6,5 +6,5 @@ create table t_anggota(
     jurusan     varchar  (50) not null,
     angkatan    varchar  (50) not null,
     alamat      varchar       not null,
-    foreign key (id_users) references s_user(id)
+    foreign key (id_users) references users(id)
 );

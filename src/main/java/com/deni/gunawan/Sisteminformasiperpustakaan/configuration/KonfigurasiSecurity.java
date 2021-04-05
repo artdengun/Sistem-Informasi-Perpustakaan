@@ -53,7 +53,7 @@ public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
         http.httpBasic().disable();
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/signup").permitAll()
+                .antMatchers("/signup").hasAnyAuthority("USER")
                 .antMatchers("/confirm").permitAll()
                 .antMatchers("/signin").permitAll()
                 .and()
@@ -61,7 +61,7 @@ public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
                 .loginPage("/signin").failureUrl("/signin?error=true")
                 .loginProcessingUrl("/authentication")
                 .defaultSuccessUrl("/dashboard")
-                .usernameParameter("email")
+                .usernameParameter("username")
                 .passwordParameter("password")
                 .and()
                 .logout().permitAll()
