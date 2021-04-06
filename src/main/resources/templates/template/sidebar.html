@@ -41,21 +41,21 @@
         <hr class="sidebar-divider">
 
         <li class="nav-item">
-            <a class="nav-link" sec:authorize="hasAuthority('ADMIN')"  th:href="@{/peminjaman}">
+            <a class="nav-link" th:href="@{/peminjaman}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Peminjaman</span></a>
         </li>
         <hr class="sidebar-divider">
 
         <li class="nav-item">
-            <a class="nav-link"  th:href="@{/buku}">
+            <a class="nav-link" th:href="@{/buku}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Buku</span></a>
         </li>
         <hr class="sidebar-divider">
 
         <li class="nav-item">
-            <a class="nav-link"  sec:authorize="hasAuthority('ADMIN')" th:href="@{/pengembalian}">
+            <a class="nav-link" th:href="@{/pengembalian}">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Pengembalian</span></a>
         </li>

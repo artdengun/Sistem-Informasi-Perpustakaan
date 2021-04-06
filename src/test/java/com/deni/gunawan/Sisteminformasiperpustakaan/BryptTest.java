@@ -17,21 +17,21 @@ public class BryptTest {
 
     @Test
     public void testgenereatePasswordBcrypt(){
-        String passwordMahasiswa = "user";
-        String bcryptStaff = passwordEncoder.encode(passwordMahasiswa);
+        String passwordUser = "passworduser";
+        String bcryptUser = passwordEncoder.encode(passwordUser);
+        Assert.assertNotNull(bcryptUser);
+        System.out.println("user = " + bcryptUser);
+
+        String passwordStaff = "passwordstaff";
+        String bcryptStaff = passwordEncoder.encode(passwordStaff);
         Assert.assertNotNull(bcryptStaff);
-        System.out.println("user = " + bcryptStaff);
+        System.out.println("staff = "+bcryptStaff);
 
-        String passwordAdmin = "staff";
+
+        String passwordAdmin = "admin";
         String bcryptAdmin = passwordEncoder.encode(passwordAdmin);
-        Assert.assertNotNull(passwordAdmin);
-        System.out.println("staff = "+bcryptAdmin);
-
-
-        String passwordDeveloper = "admin";
-        String bcryptDeveloper = passwordEncoder.encode(passwordDeveloper);
-        Assert.assertNotNull(passwordDeveloper);
-        System.out.println("admin =  "+bcryptDeveloper);
+        Assert.assertNotNull(bcryptAdmin);
+        System.out.println("admin =  "+bcryptAdmin);
     }
 
 }

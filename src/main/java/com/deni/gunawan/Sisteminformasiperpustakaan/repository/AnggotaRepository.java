@@ -10,7 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AnggotaRepository extends JpaRepository<Anggota, String> {
 
-    Iterable<Anggota> findByUser(User p);
-
 
 }

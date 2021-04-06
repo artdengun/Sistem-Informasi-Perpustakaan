@@ -10,22 +10,21 @@
 
             <!-- Page Heading -->
             <h1 class="h3 mb-2 text-gray-800">Data Anggota</h1>
-            <p class="mb-4"  sec:authorize="hasAuthority('ADMIN')">Silahkan Untuk mengisi Data Anggota , yang meminjam Buku pada perpustakaan ini, pastikan anggota yang terdaftar adalah Mahasiswa. Terimakasih <a target="_blank"></p>
-            <p class="mb-4"  sec:authorize="hasAuthority('LIHAT_DATA')">Hai, Berikut adalah Daftar Anggota Di Perpustakaan ini </p>
+            <p class="mb-4" >Silahkan Untuk mengisi Data Anggota , yang meminjam Buku pada perpustakaan ini, pastikan anggota yang terdaftar adalah Mahasiswa. Terimakasih <a target="_blank"></p>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Data Anggota Perpustakaan</h6>
                     <a type="button" class="btn btn-outline-danger btn-sm fa-pull-right shadow-sm rounded"
-                       th:href="@{/anggota/report/pdf/LaporanAnggota}"  sec:authorize="hasAuthority('ADMIN')">Export
+                       th:href="@{/anggota/report/pdf/LaporanAnggota}" >Export
                         PDF</a>
                     <a type="button" class="btn btn-outline-success btn-sm fa-pull-right shadow-sm rounded mr-2"
-                       th:href="@{/anggota/report/excel/LaporanAnggota}"  sec:authorize="hasAuthority('ADMIN')">Export
+                       th:href="@{/anggota/report/excel/LaporanAnggota}">Export
                         Excel</a>
                 </div>
                 <button type=" button" class="btn btn-primary btn-sm  ml-2 mr-2 shadow-lg rounded "
-                        data-toggle="modal" data-target="#addModal"  sec:authorize="hasAuthority('ADMIN')">Tambah Anggota </button>
+                        data-toggle="modal" data-target="#addModal" >Tambah Anggota </button>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
@@ -36,7 +35,7 @@
                                 <th>Jurusan</th>
                                 <th>Angkatan</th>
                                 <th>Alamat</th>
-                                <th  sec:authorize="hasAuthority('ADMIN')">Action</th>
+                                <th >Action</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -46,7 +45,7 @@
                                 <th>Jurusan</th>
                                 <th>Angkatan</th>
                                 <th>Alamat</th>
-                                <th  sec:authorize="hasAuthority('ADMIN')"> Action</th>
+                                <th> Action</th>
                             </tr>
                             </tfoot>
                             <tbody>
@@ -56,11 +55,11 @@
                                 <td th:text="${anggota.jurusan}"></td>
                                 <td th:text="${anggota.angkatan}"></td>
                                 <td th:text="${anggota.alamat}"></td>
-                                <td  sec:authorize="hasAuthority('ADMIN')">
+                                <td>
                                     <div class="btn-group">
                                         <a  class="btn btn-primary btn-sm" id="editButton"   th:href="@{/anggota/findById/(id=${anggota.id_anggota})}"><i class="fas fa-edit"></i></a>
-                                        <a class="btn btn-success btn-sm" id="detailsButton" th:href="@{/anggota/findById/(id=${anggota.id_anggota})}"><i class="fas fa-file-alt"></i></a>
-                                        <a class="btn btn-danger btn-sm" id="deleteButton"  th:href="@{/anggota/delete/(id=${anggota.id_anggota})}"><i class="fas fa-trash-alt"></i></a>
+                                        <a  class="btn btn-success btn-sm" id="detailsButton" th:href="@{/anggota/findById/(id=${anggota.id_anggota})}"><i class="fas fa-file-alt"></i></a>
+                                        <a  class="btn btn-danger btn-sm" id="deleteButton"  th:href="@{/anggota/delete/(id=${anggota.id_anggota})}"><i class="fas fa-trash-alt"></i></a>
                                     </div>
                                 </td>
                             </tr>

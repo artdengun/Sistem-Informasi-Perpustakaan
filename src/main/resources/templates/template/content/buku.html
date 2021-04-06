@@ -10,20 +10,18 @@
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Data Buku</h1>
-                <p  sec:authorize="hasAuthority('ADMIN')" class="mb-4">Silahkan Untuk mengisi Data Buku Terbaru, <b>PASTIKAN</b> menginput data sesuai dengan
+                <p class="mb-4">Silahkan Untuk mengisi Data Buku Terbaru, <b>PASTIKAN</b> menginput data sesuai dengan
                     data <b>Mahasiswa</b> Terimakasih. <a target="_blank"></p>
-
-                <p class="mb-4"  sec:authorize="hasAuthority('LIHAT_DATA')">Kamu sudah siap membaca? Ini adalah halaman Buku kami, silahkan dilihat.  </p>
 
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Data Buku Perpustakaan</h6> <br />
-                        <a  sec:authorize="hasAuthority('ADMIN')" type="button" class="btn btn-outline-danger btn-sm fa-pull-right shadow-sm rounded"
+                        <a  type="button" class="btn btn-outline-danger btn-sm fa-pull-right shadow-sm rounded"
                             th:href="@{/buku/report/pdf/LaporanBuku}">Export
                             PDF</a>
-                        <a   sec:authorize="hasAuthority('ADMIN')" type="button" class="btn btn-outline-success btn-sm fa-pull-right shadow-sm rounded mr-2"
+                        <a  type="button" class="btn btn-outline-success btn-sm fa-pull-right shadow-sm rounded mr-2"
                             th:href="@{/buku/report/excel/LaporanBuku}">Export
                             Excel</a>
                     </div>
@@ -38,7 +36,7 @@
                                         <th>Pengarang</th>
                                         <th>Penerbit</th>
                                         <th>Jumlah</th>
-                                        <th  sec:authorize="hasAuthority('ADMIN')">Action</th>
+                                        <th>Action</th>
 
                                     </tr>
                                 </thead>
@@ -48,7 +46,7 @@
                                         <th>Pengarang</th>
                                         <th>Penerbit</th>
                                         <th>Jumlah</th>
-                                        <th  sec:authorize="hasAuthority('ADMIN')">Action</th>
+                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>

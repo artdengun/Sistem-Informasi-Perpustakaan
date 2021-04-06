@@ -8,7 +8,6 @@ import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -57,7 +56,7 @@ public class UserService {
 
         String randomCode = RandomString.make(64);
         user.setVerificationCode(randomCode);
-        user.setActive(false);
+        user.setActive(true);
         Role userRole = roleRepository.findByRole("USER");
         user.setId_role(new HashSet<Role>(Arrays.asList(userRole)));
 
