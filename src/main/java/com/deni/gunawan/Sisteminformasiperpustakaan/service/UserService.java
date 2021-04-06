@@ -77,7 +77,7 @@ public class UserService {
                 + "Silahkan Klik Link berikut Ini untuk proses verifikasi data Email Anda:<br>"
                 + "<h3><a href=\"[[URL]]\" target=\"_self\">Verifikasi</a></h3>"
                 + "Terima Kasih,<br>"
-                + "Regards : "
+                + "Regards : <br>"
                 + "Deni Gunawan - Owner";
 
         MimeMessage message = javaMailSender.createMimeMessage();
