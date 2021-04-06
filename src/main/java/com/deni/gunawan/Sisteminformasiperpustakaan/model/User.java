@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,18 +27,23 @@ public class User {
     private String id;
 
     @Column(name = "firstname", nullable = false, length = 20)
+    @NotBlank(message = "{firstname.message}")
     private String firstname;
 
     @Column(name = "lastname", nullable = false, length = 20)
+    @NotBlank(message = "{lastname.message}")
     private String lastname;
 
     @Column(name = "username" , nullable = false, unique = true, length = 50)
+    @NotBlank(message = "{username.message}")
     private String username;
 
     @Column(nullable = false, unique = true, length = 45)
+    @NotBlank(message = "{email.message}")
     private String email;
 
     @Column(nullable = false, length = 64)
+    @NotBlank(message = "{password.message}")
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER,

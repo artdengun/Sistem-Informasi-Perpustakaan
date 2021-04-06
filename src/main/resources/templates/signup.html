@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,23 +49,27 @@
                         <div class="form-group">
                             <label for="firstname" ><i class="fas fa-user"></i></label>
                             <input type="text" name="firstname" th:field="*{firstname}" id="firstname" placeholder="Input Your Firstname"/>
-
+                            <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="lastname"> <i class="fas fa-user"></i></label>
                             <input type="text" name="lastname" th:field="*{lastname}" id="lastname" placeholder="Input Your Lastname"/>
+                            <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                           <label for="username"> <i class="fas fa-user-tie"></i></label>
                            <input type="text" name="username"  id="username" th:field="*{username}" placeholder="Input Yout Username  "/>
-                      </div>
+                            <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></span>
+                        </div>
                         <div class="form-group">
                             <label for="email" ><i class="fas fa-envelope"></i></label>
                             <input type="text" name="email" th:field="*{email}" id="email" placeholder="email"/>
+                            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label for="password" ><i class="fas fa-key"></i></label>
-                            <input type="password" name="password" th:field="*{password}" id="password" placeholder="Input Your Password" required minlength="6" maxlength="10"/>
+                            <input type="password" name="password" th:field="*{password}" id="password" placeholder="Input Your Password" minlength="6" maxlength="10"/>
+                            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></span>
                         </div>
 
                         <div class="form-group form-button">
