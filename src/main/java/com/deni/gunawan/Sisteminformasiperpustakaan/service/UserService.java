@@ -56,7 +56,7 @@ public class UserService {
 
         String randomCode = RandomString.make(64);
         user.setVerificationCode(randomCode);
-        user.setActive(true);
+        user.setActive(false);
         Role userRole = roleRepository.findByRole("USER");
         user.setId_role(new HashSet<Role>(Arrays.asList(userRole)));
 
