@@ -73,10 +73,12 @@ public class UserService {
         String senderName = "payangandev";
         String subject = "Please verify your registration";
         String content = "Dear [[name]],<br>"
-                + "Please click the link below to verify your registration:<br>"
-                + "<h3><a href=\"[[URL]]\" target=\"_self\">VERIFY</a></h3>"
-                + "Thank you,<br>"
-                + "payangandev";
+                + "Terimakasih Sudah Mendaftar di SISPUR "
+                + "Silahkan Klik Link berikut Ini untuk proses verifikasi data Email Anda:<br>"
+                + "<h3><a href=\"[[URL]]\" target=\"_self\">Verifikasi</a></h3>"
+                + "Terima Kasih,<br>"
+                + "Regards : "
+                + "Deni Gunawan - Owner";
 
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
@@ -94,7 +96,7 @@ public class UserService {
 
         javaMailSender.send(message);
 
-        System.out.println("Email has been sent");
+        System.out.println("Email Berhasil Terkirim");
     }
 
     public boolean verify(String verificationCode) {
