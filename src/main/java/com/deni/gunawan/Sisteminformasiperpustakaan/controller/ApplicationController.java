@@ -4,7 +4,6 @@ import com.deni.gunawan.Sisteminformasiperpustakaan.model.User;
 import com.deni.gunawan.Sisteminformasiperpustakaan.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,12 +14,15 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
+import java.security.Principal;
+
 
 @Controller
 public class ApplicationController {
 
     @Autowired
     private UserService service;
+
 
     @GetMapping("dashboard")
     public String getDashboard(){
@@ -39,6 +41,7 @@ public class ApplicationController {
 
         return "signup";
     }
+
 
     @PostMapping("/process_register")
     public String processRegister(@Valid  User user, BindingResult result, Model model, HttpServletRequest request)
@@ -65,7 +68,8 @@ public class ApplicationController {
     }
 
     @GetMapping("/")
-    public String getIndex(){
+    public String getIndex() {
+
         return "index";
     }
 

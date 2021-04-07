@@ -18,6 +18,7 @@ public class SistemInformasiPerpustakaanApplication {
 		return new LayoutDialect();
 	}
 
+
 	public static void main(String[] args) {
 		SpringApplication.run(SistemInformasiPerpustakaanApplication.class, args);
 	}

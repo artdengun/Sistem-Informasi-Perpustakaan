@@ -72,6 +72,11 @@
                             <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></span>
                         </div>
 
+                        <div class="form-group">
+                            <label for="password" ><i class="fas fa-key"></i></label>
+                            <input type="password" name="matchingPassword" th:field="*{matchingPassword}" id="matchingPassword" placeholder="Input Your Password" minlength="6" maxlength="10"/>
+                        </div>
+
                         <div class="form-group form-button">
                             <input type="submit"  name="signup" id="signup" class="form-submit" value="Register"/>
                         </div>

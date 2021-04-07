@@ -1,24 +1,26 @@
 package com.deni.gunawan.Sisteminformasiperpustakaan.model;
 
+import com.deni.gunawan.Sisteminformasiperpustakaan.annotation.PasswordMatches;
+import com.deni.gunawan.Sisteminformasiperpustakaan.annotation.ValidEmail;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import java.util.HashSet;
 import java.util.Set;
 
 
+
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "users")
+@PasswordMatches
 public class User {
 
     @Id
@@ -40,11 +42,16 @@ public class User {
 
     @Column(nullable = false, unique = true, length = 45)
     @NotBlank(message = "{email.message}")
+    @ValidEmail
     private String email;
+
 
     @Column(nullable = false, length = 64)
     @NotBlank(message = "{password.message}")
     private String password;
+
+    @Column(name = "matchingpassword", nullable = false, length = 64)
+    private String matchingPassword;
 
     @ManyToMany(fetch = FetchType.EAGER,
             cascade = {

@@ -12,6 +12,7 @@ create table users(
   username varchar(50) not null,
   email varchar(64) not null,
   password varchar(64) not null,
+  matchingpassword varchar(64),
   verificationcode varchar(64),
   active boolean not null,
   id_role varchar (36),

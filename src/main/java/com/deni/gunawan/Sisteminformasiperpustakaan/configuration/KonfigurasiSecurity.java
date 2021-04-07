@@ -3,6 +3,8 @@ package com.deni.gunawan.Sisteminformasiperpustakaan.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
+@Configuration
 @EnableWebSecurity
 public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
 
@@ -47,24 +50,23 @@ public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
     }
 
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic().disable();
+
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/signin").permitAll()
                 .antMatchers("/confirm/**", "/verify_fail/**", "/verify_success/**", "/register_success").permitAll()
                 .antMatchers("/signup").permitAll()
-                .antMatchers("/anggota", "/peminjaman", "/buku","/pengembalian").permitAll()
-                .antMatchers("/anggota/tambahData", "/anggota/findById","/anggota/update/**","/anggota/delete/**").permitAll()
-                .antMatchers("/buku/tambahData", "/buku/findById","/buku/update/**","/buku/delete/**").permitAll()
-                .antMatchers("/peminjaman/tambahData", "/peminjaman/findById","/peminjaman/update/**","/peminjaman/delete/**").permitAll()
-                .antMatchers("/pengembalian/tambahData", "/pengembalian/findById","/pengembalian/update/**","/pengembalian/delete/**").permitAll()
-                .antMatchers("/anggota/report/pdf/LaporanAnggota","/anggota/report/excel/LaporanAnggota").permitAll()
-                .antMatchers("/buku/report/pdf/LaporanBuku","/buku/report/excel/LaporanBuku").permitAll()
-                .antMatchers("/peminjaman/report/pdf/LaporanPeminjaman","/peminjaman/report/excel/LaporanPeminjaman").permitAll()
-                .antMatchers("/pengembalian/report/pdf/LaporanPengembalian","/pengembalian/report/excel/LaporanPengembalian").permitAll()
+                .antMatchers("/anggota", "/peminjaman", "/buku", "/pengembalian").permitAll()
+                .antMatchers("/anggota/tambahData", "/anggota/findById", "/anggota/update/**", "/anggota/delete/**").permitAll()
+                .antMatchers("/buku/tambahData", "/buku/findById", "/buku/update/**", "/buku/delete/**").permitAll()
+                .antMatchers("/peminjaman/tambahData", "/peminjaman/findById", "/peminjaman/update/**", "/peminjaman/delete/**").permitAll()
+                .antMatchers("/pengembalian/tambahData", "/pengembalian/findById", "/pengembalian/update/**", "/pengembalian/delete/**").permitAll()
+                .antMatchers("/anggota/report/pdf/LaporanAnggota", "/anggota/report/excel/LaporanAnggota").permitAll()
+                .antMatchers("/buku/report/pdf/LaporanBuku", "/buku/report/excel/LaporanBuku").permitAll()
+                .antMatchers("/peminjaman/report/pdf/LaporanPeminjaman", "/peminjaman/report/excel/LaporanPeminjaman").permitAll()
+                .antMatchers("/pengembalian/report/pdf/LaporanPengembalian", "/pengembalian/report/excel/LaporanPengembalian").permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/signin").failureUrl("/signin?error=true")
@@ -80,7 +82,6 @@ public class KonfigurasiSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/auth/access_denied");
     }
-
 
 
 
